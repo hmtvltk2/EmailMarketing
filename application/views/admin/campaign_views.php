@@ -15,8 +15,9 @@
                 <div class="right_col" role="main">
                     <div class="contet_main">
                         <div class="x_panel">
+                             <p class="loading"></p>
                             <div class="x_title">
-                                <h2><small>chiến dịch</small></h2>
+                                <h2><i class="fa fa-bullhorn"></i><small> Tạo mới chiến dịch</small></h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                     </li>
@@ -29,41 +30,41 @@
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
-                                <form class="form-horizontal form-label-left input_mask" method="post">
+                                <form class="form-horizontal form-label-left input_mask" method="post" id="taoChienDich">
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Mã chiến dịch *</label>
                                         <div class="col-md-7 col-sm-7 col-xs-12">
-                                            <input type="text" class="form-control maKhachHang_sua" placeholder="Tự động" disabled="disabled">
+                                            <input type="text" class="form-control maKhachHang_sua" placeholder="Tự động" disabled="disabled" style="width: 50%">
                                         </div>
                                     </div>
                                     <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" >Tên chiến dịch * </label>
                                         <div class="col-md-7 col-sm-7 col-xs-12">
-                                            <input type="text" class="form-control col-md-7 col-xs-12" required="" >
+                                            <input type="text" class="form-control col-md-7 col-xs-12 tenChienDich" required="" >
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" >Ngày gửi * </label>
                                         <div class="col-md-7 col-sm-7 col-xs-12">
-                                            <input type="date" class="form-control ngayTao" required="" >
+                                            <input type="date" class="form-control ngay" required="" >
                                         </div>
                                     </div>
                                     <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="occupation">Tên gửi *</label>
                                         <div class="col-md-7 col-sm-7 col-xs-12">
-                                            <input type="text" class="form-control col-md-7 col-xs-12" required="">
+                                            <input type="text" class="form-control col-md-7 col-xs-12 tenGui" required="">
                                         </div>
                                     </div>
                                     <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email gửi *</label>
                                         <div class="col-md-7 col-sm-7 col-xs-12">
-                                            <input type="email" id="email" disabled="disabled" class="form-control col-md-7 col-xs-12" placeholder="<?php echo $taiKhoan->email ?>">
+                                            <input type="email" id="email" disabled="disabled" class="form-control col-md-7 col-xs-12 emailGui" placeholder="<?php echo $taiKhoan->email ?>">
                                         </div>
                                     </div>
                                     <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Chọn danh sách *</label>
                                         <div class="col-md-7 col-sm-7 col-xs-12">
-                                            <select class="form-control timKhachHangTheoDanhSach" required="" readonly="readonly">
+                                            <select class="form-control maDSKH" required="" readonly="readonly">
                                                 <?php foreach ($dskh as $r): ?>                                                
                                                     <option value=""><?php echo $r->maLoai; ?></option>                                                                                               
                                                 <?php endforeach ?>
@@ -74,43 +75,43 @@
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Nhắc lại lý do <span class="required">*</span>
                                         </label>
                                         <div class="col-md-7 col-sm-7 col-xs-12">
-                                            <textarea style="height: 100px" id="textarea" class="form-control col-md-7 col-xs-12" placeholder="vd: Bạn nhận được email này vì bạn đã đăng ký tại khung đăng ký của tôi"></textarea>
+                                            <textarea style="height: 100px" id="textarea" class="form-control col-md-7 col-xs-12 lyDo" placeholder="vd: Bạn nhận được email này vì bạn đã đăng ký tại khung đăng ký của tôi"></textarea>
                                         </div>
                                     </div>
                                     <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Chọn thư gửi *</label>
                                         <div class="col-md-7 col-sm-7 col-xs-12">
-                                            <select class="form-control timKhachHangTheoDanhSach" required="" readonly="readonly">
-                                               <?php foreach ($thuDienTu as $r): ?>                                                
-                                                    <option value=""><?php echo $r->maThu; ?></option>                                                                                               
+                                            <select class="form-control timKhachHangTheoDanhSach maThuGui" required="" readonly="readonly">
+                                                <?php foreach ($thuDienTu as $r): ?>                                                
+                                                    <option value=""><?php echo $r['maThu']; ?></option>                                                                                               
                                                 <?php endforeach ?>
                                             </select>                          
                                         </div>
                                         <div class="col-md-2 col-sm-2 col-xs-12">
-                                            <button type="submit" class="btn btn-warning" style="padding-bottom: 4px;padding-top: 4px;margin-top: 2px">Tạo mới</button>
+                                            <button class="btn btn-warning" style="padding-bottom: 4px;padding-top: 4px;margin-top: 2px">Tạo mới</button>
                                         </div>
                                     </div>
                                     <div class="ln_solid"></div>
                                     <div class="form-group">
                                         <div class="col-md-6 col-md-offset-3">
                                             <button type="reset" class="btn btn-primary">Hủy</button>
-                                            <button type="submit" class="btn btn-success">Lưu</button>
+                                            <button type="submit" class="btn btn-success">Gửi</button>
                                         </div>
                                     </div>
-                                    
+
                                 </form>                              
                             </div>
                         </div>
                         <div class="x_panel" style="margin-top: 20px">
                             <div class="x_title">
-                                <h2><small>Danh sách đã tạo </small></h2>
+                                <h2><i class="fa fa-envelope-o"></i><small> Danh sách thư đã tạo </small></h2>
                                 <ul class="nav navbar-right panel_toolbox">
-                                    <li style="padding-right: 13px; padding-top: 7px"> Mã chiến dịch : </li>
+                                    <li style="padding-right: 13px; padding-top: 7px"> Mã thư: </li>
                                     <li> <select id="heard" class="form-control" required="" readonly="readonly">
-                                            <option value="">001</option>
-                                            <option value="">002</option>
-                                            <option value="">003</option>
-                                            <option value="">004</option>
+                                             <option value=""></option>
+                                            <?php foreach ($thuDienTu as $r): ?>                                                
+                                                <option value=""><?php echo $r['maThu']; ?></option>                                                                                               
+                                            <?php endforeach ?>
                                         </select> 
                                     </li>
 
@@ -121,58 +122,26 @@
                                 <table class="table table-striped responsive-utilities jambo_table bulk_action">
                                     <thead>
                                         <tr class="headings">
-                                            <th class="column-title">Mã </th>
                                             <th class="column-title">Mã thư</th>
-                                            <th class="column-title">Mã KH</th>
-                                            <th class="column-title">SL gửi</th>
-                                            <th class="column-title">SL thành công</th>
-                                            <th class="column-title">SL mở thư</th>
-                                            <th class="column-title">Tỷ lệ</th>
-                                            <th class="column-title">#</th>
+                                            <th class="column-title">Tên thư</th>
+                                            <th class="column-title">Tiêu đề thư</th>
+                                            <th class="column-title">Nội dung</th>
+                                            <th class="column-title">Số lần gửi</th>
+                                            <th class="column-title"><i class="fa fa-trash-o"></i></th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
-                                        <tr class="even pointer">                                                   
-                                            <td class=" ">1</td>
-                                            <td class=" ">001</td>
-                                            <td class=" ">001</td>
-                                            <td class=" ">69</td>
-                                            <td class=" ">60</td>
-                                            <td class=" ">58</td>
-                                            <td class=" ">80%</td>
-                                            <td class=" last"><a href="#">chi tiết</a></td>                 
-                                        </tr>
-                                        <tr class="even pointer">                                                   
-                                            <td class=" ">1</td>
-                                            <td class=" ">001</td>
-                                            <td class=" ">001</td>
-                                            <td class=" ">69</td>
-                                            <td class=" ">60</td>
-                                            <td class=" ">58</td>
-                                            <td class=" ">80%</td>
-                                            <td class=" last"><a href="#">chi tiết</a></td>                 
-                                        </tr>
-                                        <tr class="even pointer">                                                   
-                                            <td class=" ">1</td>
-                                            <td class=" ">001</td>
-                                            <td class=" ">001</td>
-                                            <td class=" ">69</td>
-                                            <td class=" ">60</td>
-                                            <td class=" ">58</td>
-                                            <td class=" ">80%</td>
-                                            <td class=" last"><a href="#">chi tiết</a></td>                 
-                                        </tr>
-                                        <tr class="even pointer">                                                   
-                                            <td class=" ">1</td>
-                                            <td class=" ">001</td>
-                                            <td class=" ">001</td>
-                                            <td class=" ">69</td>
-                                            <td class=" ">60</td>
-                                            <td class=" ">58</td>
-                                            <td class=" ">80%</td>
-                                            <td class=" last"><a href="#">chi tiết</a></td>                 
-                                        </tr>
+                                        <?php foreach ($thuDienTu as $r): ?>    
+                                            <tr class="even pointer">     
+                                                <td class=" "><?php echo $r['maThu']; ?></td>
+                                                <td class=" "><?php echo $r['tenThu']; ?></td>
+                                                <td class=" "><?php echo $r['tieuDe']; ?></td>
+                                                <td><a href="<?= base_url() ?>sendEmail_controllers/xemThu/<?php echo $r['noiDung']; ?>"><?php echo $r['noiDung']; ?></a></td>   
+                                                <td class=" "><?php echo $r['num']; ?></td>
+                                                <td><input type="checkbox" class="xoaEmail" name="<?php echo $r['maThu']; ?>" id="<?php echo $r['num']; ?>"></td>                                                                                    
+                                            </tr>
+                                        <?php endforeach ?>
                                     </tbody>
 
                                 </table>
@@ -180,19 +149,117 @@
                         </div>
 
                     </div>
+                    <footer>
+                        <div class="copyright-info">
+                            <p class="pull-right">Mail_Indigo - Được phát triển bởi<a href="https://colorlib.com">2TL</a>  
+                            </p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </footer>
                 </div>
-                <footer>
-                    <div class="copyright-info">
-                        <p class="pull-right">Mail_Indigo - Được phát triển bởi<a href="https://colorlib.com">2TL</a>  
-                        </p>
-                    </div>
-                    <div class="clearfix"></div>
-                </footer>
+
                 <!-- /footer content -->
             </div>
             <!-- /page content -->
         </div>
-    </div>
-</body>
-<?php $this->load->view("admin/footer"); ?>
+    </body>
+    <?php $this->load->view("admin/footer"); ?>
+    <a href = "#" id = "show-alert" style="display: none"> Show Alert </a>
+    <a href = "#" id = "show-info" style="display: none"> Show Info </a>
+    <a href = "#" id = "show-success" style="display: none" > Show Success </a>
+    <a href = "#" id = "show" style="display: none" > Show Success </a>
+    <script type="text/javascript" >
+        $(document).ready(function () {
+
+            $('#taoChienDich').submit(function (e) {
+                e.preventDefault();
+                var tenChienDich = $(".tenChienDich").val();
+                var ngay = $(".ngay").val();
+                var tenGui = $(".tenGui").val();
+                var emailGui = $(".emailGui").attr('placeholder');
+                var maDSKH = $(".maDSKH").find(":selected").html();
+                var lyDo = $(".lyDo").val();
+                var maThuGui = $(".maThuGui").find(":selected").html();
+                $(".loading").show();
+                $.post("<?= base_url() ?>chienDich_controllers/insert_ChienDich", {tenChienDich: tenChienDich, ngay: ngay, tenGui: tenGui, emailGui: emailGui, maDSKH: maDSKH, lyDo: lyDo, maThuGui: maThuGui}, function (data, status)
+                {
+                    if (data == "1") {
+                         $(".loading").hide();
+                        $('#show-success').click();
+                        location.reload(true);
+                        // $(".emailKH1").val("");
+                        // $(".tenKH1").val("");
+                    } else {
+                        alert(data);
+                        // $('#show-info').click();
+                    }
+                });
+            });
+
+             $(".xoaEmail").click(function () {
+                var i10 = $(this).prop('checked');
+                if (i10 == false) {
+                    return;
+                } else
+                {
+                    var ma = $(this).attr("name");
+                    var sl = $(this).attr("id");
+                    if (sl == "0")
+                    {
+                        var k = confirm("Bạn có chắc chắn muốn xóa không?");
+                        if (k == true)
+                        {
+                            $.post("<?= base_url() ?>chienDich_controllers/delete_thuDienTu", {id: ma}, function (data, status)
+                            {
+                                if (data == '1') {
+                                   $('#show-info').click();
+                                    location.reload(true);
+                                } else
+                                {
+                                    $(this).attr("checked", false);
+                                    $('#show-alert').click();
+                                }
+                            });
+                        } else
+                        {
+                            $(this).attr("checked", false);
+                        }
+                    } else
+                    {
+                        $('#show-alert').click();
+                        $(this).attr("checked", false);
+                    }
+                }
+            });
+            
+
+            $('#show-alert').click(function () {
+                $("#notification-1").emerge({
+                    theme: 'emerge-base top-right alert',
+                });
+            });
+            $('#show-info').click(function () {
+                $("#notification-2").emerge({
+                    theme: 'emerge-base top-right info',
+                });
+            });
+            $('#show-success').click(function () {
+                $("#notification-3").emerge({
+                    theme: 'emerge-base top-right success',
+                });
+            });
+
+            $('#show').click(function () {
+                $("#notification-4").emerge({
+                    theme: 'emerge-base top-right success',
+                });
+            });
+
+        });
+
+    </script>
+
+    <div id="notification-1" class="notification ">Thao tác thất bại !</div>
+    <div id="notification-2" class="notification ">Đã cập nhật !</div>
+    <div id="notification-3" class="notification">Gửi thành công !</div>
 </html>

@@ -1,38 +1,97 @@
 <?php
 
+require_once 'PHPMailerAutoload.php';
+
 class SendEmail_controllers extends CI_Controller {
 
     function __construct() {
         parent::__construct();
+        $this->load->model('thuDienTu_models');
+        $this->load->model('ThietLapGui_models');
     }
 
-    public function index() {
+    public function get_info_ThietLap() {
+        $id = '1';
+        $info = $this->ThietLapGui_models->get_info($id);
+        return $info;
+    }
 
-        $config = Array(
-            'protocol' => 'smtp',
-            'smtp_host' => 'ssl://smtp.googlemail.com',
-            'smtp_port' => 465,
-            'smtp_user' => 'nhasachindigo9111@gmail.com',
-            'smtp_pass' => 'nhasachindigo',
-            'smtp_timeout' => '4',
-            'mailtype' => 'text',
-            'charset' => 'iso-8859-1'
-        );
+    public function sendEmail() {
+        $in = $this->get_info_ThietLap();
+        
+        $content = $this->input->post('content');
 
-        $this->load->library('email', $config);
-       $this->email->set_newline("\r\n");  
+        $mail = new PHPMailer();
+        $mail->IsSMTP();
 
-        $this->email->from("nhasachindigo9111@gmail.com", "Nhà sách");
-        $this->email->to("loannguyen9111@gmail.com");
+        $mail->SMTPDebug = 3;
+        $mail->Debugoutput = "html";
+        $mail->Host = "smtp.gmail.com";
+        $mail->Port = 587;
+        $mail->SMTPSecure = "tls";
+        $mail->SMTPAuth = true;
+        $mail->Username = "nhasachindigo9111@gmail.com";
+        $mail->Password = "vyirnwatrglkhhce";
+        $mail->SetFrom("nhasachindigo9111@gmail.com", "Test Email");
+        $mail->AddReplyTo("nhasachindigo9111@gmail.com", "Test Reply");
+        $mail->AddAddress("loannguyen9111@gmail.com", "Loan Nguyễn");
 
-        $this->email->subject('Email Test');
-        $this->email->message('là lá la !');
+        $mail->CharSet = "utf-8";
 
-        if ($this->email->send()) {
-            echo'your email was sent.';
+        $mail->Subject = "Tiêu đề thư";
+
+        $mail->MsgHTML($content);
+        // Gửi thư với tập tin html
+
+        $mail->AltBody = "This is a plain-text message body";
+        //  $mail->AddAttachment("images/attact-tui.gif"); //Tập tin cần attach
+        //Tiến hành gửi email và kiểm tra lỗi
+
+        if (!$mail->Send()) {
+            echo "Có lỗi khi gửi mail: " . $mail->ErrorInfo;
         } else {
-            show_error($this->email->print_debugger());
+            echo "Đã gửi thư thành công!";
         }
+    }
+
+    public function luuEmail() {
+        $content = $this->input->post('content');
+        echo $content;
+        $tieuDeThu = $this->input->post('tieuDeThu');
+        $tenThu = $this->input->post('tenThu');
+        $idcuoi = $this->get_id_Cuoi();
+        $tenfile = "file_Email/" . $idcuoi . ".txt";
+        $myfile = fopen($tenfile, "w") or die("Unable to open file!");
+        $data = array();
+        $data['tenThu'] = $tenThu;
+        $data['tieuDe'] = $tieuDeThu;
+        $data['noiDung'] = $tenfile;
+        fwrite($myfile, $content);
+        fclose($myfile);
+        if ($this->thuDienTu_models->create($data)) {
+            echo 1;
+        } else {
+            echo 0;
+        }
+    }
+
+    public function get_id_Cuoi() {
+        $input = array();
+        $input['order'] = array('maThu', 'desc');
+        $input['limit'] = array(1, 0);
+        $info = $this->thuDienTu_models->get_list($input);
+        foreach ($info as $k => $r) {
+            $b = $r->maThu;
+            $id = (int) ($b);
+            return $id + 1;
+        }
+    }
+
+    public function xemThu($path, $name) {
+        $p = $path . "/" . $name;
+
+        $data["myfile"] = fopen($p, "r") or die("Unable to open file!");
+        $this->load->view('admin/view_email', $data);
     }
 
 }

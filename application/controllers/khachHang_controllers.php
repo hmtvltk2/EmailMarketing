@@ -5,9 +5,35 @@ class KhachHang_controllers extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('loaiDanhSach_models');
-        $this->load->model('KhachHang_models');
+        $this->load->model('khachHang_models');
     }
 
+    public function get_id_DSKH_Cuoi() {
+        $input = array();
+        $input['order'] = array('maLoai', 'desc');
+        $input['limit'] = array(1, 0);
+        $info = $this->loaiDanhSach_models->get_list($input);
+        foreach ($info as $k => $r) {
+            $b = $r->maLoai;
+            return $b;
+        }
+    }
+
+    public function reload($id) {
+        // danh sách đã tạo
+        $data1 = $this->get_list_LKH();
+        $data2['ds1'] = array();
+        foreach ($data1 as $k => $r) {
+            // thêm cột tổng số email trong 1 danh sach
+            $data2['ds1'][$k] = get_object_vars($r);
+            $data2['ds1'][$k]['num'] = $this->get_num_KH_LKH($data2['ds1'][$k]['maLoai']);
+        }
+        // lấy danh sách khách hàng của danh sách mới nhất
+        $data2['ds2'] = $this->get_list_KH_LKH($id);
+        $this->load->view("admin/customer_views", $data2);
+    }
+
+    
     public function load() {
         // danh sách đã tạo
         $data1 = $this->get_list_LKH();
@@ -19,8 +45,9 @@ class KhachHang_controllers extends CI_Controller {
         }
 
 
+        $id = $this->get_id_DSKH_Cuoi();
         // lấy danh sách khách hàng của danh sách mới nhất
-        $data2['ds2'] = $this->get_list_KH();
+        $data2['ds2'] = $this->get_list_KH_LKH($id);
         $this->load->view("admin/customer_views", $data2);
     }
 
@@ -77,7 +104,7 @@ class KhachHang_controllers extends CI_Controller {
     // đếm số khách hàng trong 1 danh sách
     public function get_num_KH_LKH($maLoaiKhachHang) {
         $input['where'] = array('maLoaiKhachHang' => $maLoaiKhachHang);
-        $info = count($this->KhachHang_models->get_list($input));
+        $info = count($this->khachHang_models->get_list($input));
         return $info;
     }
 
@@ -88,7 +115,7 @@ class KhachHang_controllers extends CI_Controller {
         $data['maLoaiKhachHang'] = $this->input->post('maLoaiKhachHang');
 
         if ($this->check_email($data['email'], $data['maLoaiKhachHang'])) {
-            if ($this->KhachHang_models->create($data)) {
+            if ($this->khachHang_models->create($data)) {
                 echo 1;
             } else {
                 echo 0;
@@ -99,24 +126,32 @@ class KhachHang_controllers extends CI_Controller {
     }
 
     // lấy khách hàng theo danh sách
+    public function get_list_KH_LKH($id) {
+        $input = array();
+        $input['where'] = array('maLoaiKhachHang' => $id);
+        $info = $this->khachHang_models->get_list($input);
+        return $info;
+    }
+
+    // lấy khách hàng theo danh sách
     public function get_list_KH_LoaiKhachHang() {
         $input = array();
         $id = $this->input->post('id');
         $input['where'] = array('maLoaiKhachHang' => $id);
-        $info = $this->KhachHang_models->get_list($input);
+        $info = $this->khachHang_models->get_list($input);
         echo json_encode($info);
     }
 
     public function get_list_KH() {
         $input = array();
         $input['limit'] = array(15, 0);
-        $info = $this->KhachHang_models->get_list($input);
+        $info = $this->khachHang_models->get_list($input);
         return $info;
     }
 
     public function delete_KH() {
         $id = $this->input->post('id');
-        if ($this->KhachHang_models->delete($id)) {
+        if ($this->khachHang_models->delete($id)) {
             echo 1;
         } else {
             echo 0;
@@ -126,7 +161,7 @@ class KhachHang_controllers extends CI_Controller {
     // thông tin của 1 khách hàng theo id
     public function get_info_KH() {
         $id = $this->input->post('id');
-        $info = $this->KhachHang_models->get_info($id);
+        $info = $this->khachHang_models->get_info($id);
         echo json_encode($info);
     }
 
@@ -134,7 +169,7 @@ class KhachHang_controllers extends CI_Controller {
     public function check_email($email, $maLoaiKhachHang) {
         $input = array();
         $input['where'] = array('email' => $email, 'maLoaiKhachHang' => $maLoaiKhachHang);
-        $info = $this->KhachHang_models->get_list($input);
+        $info = $this->khachHang_models->get_list($input);
         if (count($info) != 0) {
             return FALSE;
         } else {
@@ -152,7 +187,7 @@ class KhachHang_controllers extends CI_Controller {
 
         if ($this->check_email($data['email'], $data['maLoaiKhachHang'])) {
 
-            if ($this->KhachHang_models->update($id, $data)) {
+            if ($this->khachHang_models->update($id, $data)) {
                 echo 1;
             } else {
                 echo 0;
@@ -180,8 +215,7 @@ class KhachHang_controllers extends CI_Controller {
         $file_contents = curl_exec($ch);
         curl_close($ch);
         foreach ($this->extract_emails($file_contents) as $k => $r) {
-            if($this->insert_KH($r, $maLoaiKhachHang))
-            {
+            if ($this->insert_KH($r, $maLoaiKhachHang)) {
                 $count++;
             }
         }
@@ -196,7 +230,7 @@ class KhachHang_controllers extends CI_Controller {
         $data['maLoaiKhachHang'] = $maDanhSach;
 
         if ($this->check_email($data['email'], $data['maLoaiKhachHang'])) {
-            if ($this->KhachHang_models->create($data)) {
+            if ($this->khachHang_models->create($data)) {
                 return true;
             } else {
                 return FALSE;
@@ -205,4 +239,5 @@ class KhachHang_controllers extends CI_Controller {
             return FALSE;
         }
     }
+
 }
