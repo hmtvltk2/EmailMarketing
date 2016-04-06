@@ -5299,13 +5299,12 @@ ul.project_files li a i {
     right: 0;
     bottom: 0;
     left: 0;
-    background: #fff url("../images/loading.gif") no-repeat center center;
+    background: #fff url("../img/loading.gif") no-repeat center center;
     opacity: .75;
     filter: alpha(opacity=75);
     z-index: 20140628;
 }
-/* *********  /image cropping  **************************** */
-/* *********  moris  **************************** */
+
 
 .morris-hover {
     position: absolute;
@@ -6378,7 +6377,7 @@ ul.notifications {
     -moz-box-shadow:0 0 17px white;
     -webkit-box-shadow:0 0 17px white;
     box-shadow:0 0 17px white;
-
+    margin-left: -10px;
 }
 .button:before,.button:after{
     content:'';

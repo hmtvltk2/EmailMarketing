@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>List_type! | </title>
+
+  <!-- Bootstrap core CSS -->
+
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="fonts/css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/animate.min.css" rel="stylesheet">
+
+  <!-- Custom styling plus plugins -->
+  <link href="css/custom.css" rel="stylesheet">
+  <link href="css/icheck/flat/green.css" rel="stylesheet">
+
+
+  <script src="js/jquery.min.js"></script>
+
+
+</head>
+
+
+<body class="nav-md">
+
+  <div class="container body">
+
+
+
+    <div class="main_container">
+
+      <!-- page content -->
+      <div class="right_col" role="main" style="margin-left:0px;">
+
+        <div class="">
+          <div class="page-title">
+            <div class="title_left">
+              <h3>Tạo mới </h3>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+
+          <div class="row">
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2><small>danh sách</small></h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                     
+                    </li>
+                  </ul>
+                </div>
+                <div class="x_content">
+
+
+                  <!-- Smart Wizard -->
+                  <p>Tạo mới danh sách gửi cho chiến dịch.</p>
+                  <div id="wizard" class="form_wizard wizard_horizontal">
+                    <ul class="wizard_steps">
+                      <li>
+                        <a href="#step-1">
+                          <span class="step_no">1</span>
+                          <span class="step_descr">
+                                            Bước 1<br />
+                                            <small>Tạo mới</small>
+                                        </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#step-2">
+                          <span class="step_no">2</span>
+                          <span class="step_descr">
+                                            Bước 2<br />
+                                            <small>Địa chỉ gửi</small>
+                                        </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#step-3">
+                          <span class="step_no">3</span>
+                          <span class="step_descr">
+                                            Bước 3<br />
+                                            <small>Hoàn thành</small>
+                                        </span>
+                        </a>
+                      </li>
+
+                    </ul>
+                    <div id="step-1">
+                      <form class="form-horizontal form-label-left">
+                        <div class="form-group">
+                          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Tên danh sách<span class="required">*</span>
+                          </label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                          </div>
+                        </div>
+                       <div class="form-group">
+                                  <div class="form-group">
+                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Ngày tạo <span class="required">*</span>
+                          </label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <fieldset>
+                        <div class="control-group">
+                          <div class="controls">
+                            <div class="col-md-11 xdisplay_inputx form-group has-feedback">
+                              <input type="text" class="form-control has-feedback-left" id="single_cal4" placeholder="First Name" aria-describedby="inputSuccess2Status4">
+                              <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                              <span id="inputSuccess2Status4" class="sr-only">(success)</span>
+                            </div>
+                          </div>
+                        </div>
+                      </fieldset>
+                          </div>
+                        </div>
+                          
+                        </div>
+
+						  <input type="submit" value="Gửi" class="btn btn-default" style="margin-left: 80px; margin-top: 7px;"/>  
+                      </form>
+
+                    </div>
+                    <div id="step-2">
+                  
+            <div >
+              <div>
+                <div >
+                  <h2 style="margin-left: 20px;"><small> Tùy chọn thêm</small></h2>
+                </div>
+                <div class="x_content">
+
+                  <div class="col-xs-3">
+                    <!-- required for floating -->
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs tabs-left">
+                      <li class="active"><a href="#home" data-toggle="tab">Nhập</a>
+                      </li>
+                      <li><a href="#profile" data-toggle="tab">Chọn file</a>
+                      </li>
+                      <li><a href="#messages" data-toggle="tab">Thêm tự động</a>
+                      </li>
+                      <li><a href="#settings" data-toggle="tab">Xem danh sách</a>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="col-xs-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                      <div class="tab-pane active" id="home">
+					   <div class="x_panel">
+						 <form class="form-horizontal form-label-left">
+                        <div class="form-group">
+                          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Tên danh sách <span class="required">*</span>
+                          </label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                          </div>
+                        </div>
+						 <div class="form-group">
+                          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Tên khách hàng <span class="required">*</span>
+                          </label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                          </div>
+                        </div>
+						 <div class="form-group">
+                          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Địa chỉ mail <span class="required">*</span>
+                          </label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                          </div>
+                        </div>
+                      
+						  <input type="submit" value="Thêm" class="btn btn-default" style="margin-left: 80px; margin-top: 7px;"/>  
+                      </form>
+                </div>
+             </div>
+
+
+                        
+                     
+                      <div class="tab-pane" id="profile">  
+					  <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="x_panel">
+                
+                <div class="x_content">
+
+                  <p>Chọn tệp tải lên, có thể chọn nhiều tệp</p>
+                  <form action="choices/form_upload.html" class="dropzone" style="border: 1px solid #e5e5e5; height: 300px; "></form>
+
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                </div>
+              </div>
+            </div>
+          </div>
+        
+					  </div>
+                      <div class="tab-pane" id="messages">
+					     <div class="x_panel">
+						 <p> Đường dẫn url </p>
+						 </div>
+					  </div>
+                      <div class="tab-pane" id="settings">
+					  
+           <div class="row">
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="x_panel">
+                <p>Danh sách khách hàng</p>
+				<div class="x_content">
+                  <table id="example" class="table table-striped responsive-utilities jambo_table">
+                    <thead>
+                      <tr class="headings">
+                        <th>Xóa</th>
+                        <th>Mã khách hàng </th>
+						 <th>Mã danh sách </th>
+                        <th>Tên khách hàng </th>
+                        <th>Địa chỉ mail </th>                      
+                        <th class=" no-link last"><span class="nobr"></span>
+                        </th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr class="even pointer">
+                        <td class="a-center ">
+                          <input type="checkbox" class="tableflat">
+                        </td>
+                        <td class=" ">121000040</td>
+                        <td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i>
+                        </td>
+                        <td class=" ">John Blank L</td>
+                        <td class=" ">Paid</td>
+                        <td class=" last"><a href="#">sửa</a>
+                        </td>
+                      </tr>
+                      <tr class="odd pointer">
+                        <td class="a-center ">
+                          <input type="checkbox" class="tableflat">
+                        </td>
+                        <td class=" ">121000040</td>
+                        <td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i>
+                        </td>
+                        <td class=" ">John Blank L</td>
+                        <td class=" ">Paid</td>
+                        <td class=" last"><a href="#">sửa</a>
+                        </td>
+                      </tr>
+					   <tr class="even pointer">
+                        <td class="a-center ">
+                          <input type="checkbox" class="tableflat">
+                        </td>
+                        <td class=" ">121000040</td>
+                        <td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i>
+                        </td>
+                        <td class=" ">John Blank L</td>
+                        <td class=" ">Paid</td>
+                        <td class=" last"><a href="#">sửa</a>
+                        </td>
+                      </tr>
+                      <tr class="odd pointer">
+                        <td class="a-center ">
+                          <input type="checkbox" class="tableflat">
+                        </td>
+                        <td class=" ">121000040</td>
+                        <td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i>
+                        </td>
+                        <td class=" ">John Blank L</td>
+                        <td class=" ">Paid</td>
+                        <td class=" last"><a href="#">sửa</a>
+                        </td>
+                      </tr>
+					   <tr class="even pointer">
+                        <td class="a-center ">
+                          <input type="checkbox" class="tableflat">
+                        </td>
+                        <td class=" ">121000040</td>
+                        <td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i>
+                        </td>
+                        <td class=" ">John Blank L</td>
+                        <td class=" ">Paid</td>
+                        <td class=" last"><a href="#">sửa</a>
+                        </td>
+                      </tr>
+                      <tr class="odd pointer">
+                        <td class="a-center ">
+                          <input type="checkbox" class="tableflat">
+                        </td>
+                        <td class=" ">121000040</td>
+                        <td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i>
+                        </td>
+                        <td class=" ">John Blank L</td>
+                        <td class=" ">Paid</td>
+                        <td class=" last"><a href="#">sửa</a>
+                        </td>
+                      </tr>
+					   <tr class="even pointer">
+                        <td class="a-center ">
+                          <input type="checkbox" class="tableflat">
+                        </td>
+                        <td class=" ">121000040</td>
+                        <td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i>
+                        </td>
+                        <td class=" ">John Blank L</td>
+                        <td class=" ">Paid</td>
+                        <td class=" last"><a href="#">sửa</a>
+                        </td>
+                      </tr>
+                      <tr class="odd pointer">
+                        <td class="a-center ">
+                          <input type="checkbox" class="tableflat">
+                        </td>
+                        <td class=" ">121000040</td>
+                        <td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i>
+                        </td>
+                        <td class=" ">John Blank L</td>
+                        <td class=" ">Paid</td>
+                        <td class=" last"><a href="#">sửa</a>
+                        </td>
+                      </tr>
+                     
+					   <tr class="even pointer">
+                        <td class="a-center ">
+                          <input type="checkbox" class="tableflat">
+                        </td>
+                        <td class=" ">121000040</td>
+                        <td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i>
+                        </td>
+                        <td class=" ">John Blank L</td>
+                        <td class=" ">Paid</td>
+                        <td class=" last"><a href="#">sửa</a>
+                        </td>
+                      </tr>
+                      <tr class="odd pointer">
+                        <td class="a-center ">
+                          <input type="checkbox" class="tableflat">
+                        </td>
+                        <td class=" ">121000040</td>
+                        <td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i>
+                        </td>
+                        <td class=" ">John Blank L</td>
+                        <td class=" ">Paid</td>
+                        <td class=" last"><a href="#">sửa</a>
+                        </td>
+                      </tr>
+                    
+					  <tr class="even pointer">
+                        <td class="a-center ">
+                          <input type="checkbox" class="tableflat">
+                        </td>
+                        <td class=" ">121000040</td>
+                        <td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i>
+                        </td>
+                        <td class=" ">John Blank L</td>
+                        <td class=" ">Paid</td>
+                        <td class=" last"><a href="#">sửa</a>
+                        </td>
+                      </tr>
+                      <tr class="odd pointer">
+                        <td class="a-center ">
+                          <input type="checkbox" class="tableflat">
+                        </td>
+                        <td class=" ">121000040</td>
+                        <td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i>
+                        </td>
+                        <td class=" ">John Blank L</td>
+                        <td class=" ">Paid</td>
+                        <td class=" last"><a href="#">sửa</a>
+                        </td>
+                      </tr>
+                    
+					  <tr class="even pointer">
+                        <td class="a-center ">
+                          <input type="checkbox" class="tableflat">
+                        </td>
+                        <td class=" ">121000040</td>
+                        <td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i>
+                        </td>
+                        <td class=" ">John Blank L</td>
+                        <td class=" ">Paid</td>
+                        <td class=" last"><a href="#">sửa</a>
+                        </td>
+                      </tr>
+                      <tr class="odd pointer">
+                        <td class="a-center ">
+                          <input type="checkbox" class="tableflat">
+                        </td>
+                        <td class=" ">121000040</td>
+                        <td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i>
+                        </td>
+                        <td class=" ">John Blank L</td>
+                        <td class=" ">Paid</td>
+                        <td class=" last"><a href="#">sửa</a>
+                        </td>
+                      </tr>
+                    
+					  <tr class="even pointer">
+                        <td class="a-center ">
+                          <input type="checkbox" class="tableflat">
+                        </td>
+                        <td class=" ">121000040</td>
+                        <td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i>
+                        </td>
+                        <td class=" ">John Blank L</td>
+                        <td class=" ">Paid</td>
+                        <td class=" last"><a href="#">sửa</a>
+                        </td>
+                      </tr>
+                      <tr class="odd pointer">
+                        <td class="a-center ">
+                          <input type="checkbox" class="tableflat">
+                        </td>
+                        <td class=" ">121000040</td>
+                        <td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i>
+                        </td>
+                        <td class=" ">John Blank L</td>
+                        <td class=" ">Paid</td>
+                        <td class=" last"><a href="#">sửa</a>
+                        </td>
+                      </tr>
+                    
+                    </tbody>
+
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <br />
+            <br />
+            <br />
+
+          </div>
+        
+					  </div>
+                    </div>
+                  </div>
+
+                  <div class="clearfix"></div>
+
+                </div>
+              </div>
+            </div>
+
+                    </div>
+                    <div id="step-3">
+                      <h2 class="StepTitle">Step 3 Content</h2>
+                      <p>
+                        Đã tạo hoàn tất
+                      </p>
+                      <p>
+                        mã :
+                      </p>
+					   <p>
+                        Tên:
+                      </p>
+					   <p>
+                        Ngày:
+                      </p>
+					  <p>
+                        Số lượng khách hàng:
+                      </p>
+                    </div>
+
+
+                  </div>
+                  <!-- End SmartWizard Content -->
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      <!-- /page content -->
+    </div>
+
+  </div>
+
+
+
+  <script src="js/bootstrap.min.js"></script>
+
+  <!-- chart js -->
+  <script src="js/chartjs/chart.min.js"></script>
+  <!-- bootstrap progress js -->
+  <script src="js/progressbar/bootstrap-progressbar.min.js"></script>
+  <script src="js/nicescroll/jquery.nicescroll.min.js"></script>
+  <!-- icheck -->
+  <script src="js/icheck/icheck.min.js"></script>
+
+  <script src="js/custom.js"></script>
+  <!-- form wizard -->
+  <script type="text/javascript" src="js/wizard/jquery.smartWizard.js"></script>
+  <!-- pace -->
+  <script src="js/pace/pace.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      // Smart Wizard
+      $('#wizard').smartWizard();
+
+      function onFinishCallback() {
+        $('#wizard').smartWizard('showMessage', 'Finish Clicked');
+        //alert('Finish Clicked');
+      }
+    });
+
+    $(document).ready(function() {
+      // Smart Wizard
+      $('#wizard_verticle').smartWizard({
+        transitionEffect: 'slide'
+      });
+
+    });
+  </script>
+
+
+  <!-- daterangepicker -->
+  <script type="text/javascript" src="js/moment/moment.min.js"></script>
+  <script type="text/javascript" src="js/datepicker/daterangepicker.js"></script>
+  <!-- input mask -->
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#single_cal1').daterangepicker({
+        singleDatePicker: true,
+        calender_style: "picker_1"
+      }, function(start, end, label) {
+        console.log(start.toISOString(), end.toISOString(), label);
+      });
+      $('#single_cal2').daterangepicker({
+        singleDatePicker: true,
+        calender_style: "picker_2"
+      }, function(start, end, label) {
+        console.log(start.toISOString(), end.toISOString(), label);
+      });
+      $('#single_cal3').daterangepicker({
+        singleDatePicker: true,
+        calender_style: "picker_3"
+      }, function(start, end, label) {
+        console.log(start.toISOString(), end.toISOString(), label);
+      });
+      $('#single_cal4').daterangepicker({
+        singleDatePicker: true,
+        calender_style: "picker_4"
+      }, function(start, end, label) {
+        console.log(start.toISOString(), end.toISOString(), label);
+      });
+    });
+  </script>
+
+  <!-- dropzone up file-->
+  <script src="js/dropzone/dropzone.js"></script>
+  
+  <script src="js/bootstrap.min.js"></script>
+
+  <!-- chart js -->
+  <script src="js/chartjs/chart.min.js"></script>
+  <!-- bootstrap progress js -->
+  <script src="js/progressbar/bootstrap-progressbar.min.js"></script>
+  <script src="js/nicescroll/jquery.nicescroll.min.js"></script>
+  <!-- icheck -->
+  <script src="js/icheck/icheck.min.js"></script>
+
+  <script src="js/custom.js"></script>
+
+
+  <!-- Datatables -->
+  <script src="js/datatables/js/jquery.dataTables.js"></script>
+  <script src="js/datatables/tools/js/dataTables.tableTools.js"></script>
+
+  <!-- pace -->
+  <script src="js/pace/pace.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('input.tableflat').iCheck({
+        checkboxClass: 'icheckbox_flat-green',
+        radioClass: 'iradio_flat-green'
+      });
+    });
+
+    var asInitVals = new Array();
+    $(document).ready(function() {
+      var oTable = $('#example').dataTable({
+        "oLanguage": {
+          "sSearch": "Search all columns:"
+        },
+        "aoColumnDefs": [{
+            'bSortable': false,
+            'aTargets': [0]
+          } //disables sorting for column one
+        ],
+        'iDisplayLength': 12,
+        "sPaginationType": "full_numbers",
+        "dom": 'T<"clear">lfrtip',
+        "tableTools": {
+          "sSwfPath": "<?php echo base_url('assets2/js/Datatables/tools/swf/copy_csv_xls_pdf.swf'); ?>"
+        }
+      });
+      $("tfoot input").keyup(function() {
+        /* Filter on the column based on the index of this element's parent <th> */
+        oTable.fnFilter(this.value, $("tfoot th").index($(this).parent()));
+      });
+      $("tfoot input").each(function(i) {
+        asInitVals[i] = this.value;
+      });
+      $("tfoot input").focus(function() {
+        if (this.className == "search_init") {
+          this.className = "";
+          this.value = "";
+        }
+      });
+      $("tfoot input").blur(function(i) {
+        if (this.value == "") {
+          this.className = "search_init";
+          this.value = asInitVals[$("tfoot input").index(this)];
+        }
+      });
+    });
+  </script>
+
+  <link href="css\datatables\tools\css" rel="stylesheet">
+</body>
+
+</html>
