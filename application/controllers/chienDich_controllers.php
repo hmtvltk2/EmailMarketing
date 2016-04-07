@@ -1,5 +1,7 @@
 <?php
+
 require_once 'PHPMailerAutoload.php';
+
 class ChienDich_controllers extends CI_Controller {
 
     public function __construct() {
@@ -28,21 +30,41 @@ class ChienDich_controllers extends CI_Controller {
             return $b;
         }
     }
+     public function get_id_Cuoi_v() {
+        $input = array();
+        $input['order'] = array('maChienDich', 'desc');
+        $input['limit'] = array(1, 0);
+        $info = $this->ChienDich_models->get_list($input);
+        foreach ($info as $k => $r) {
+            $b = $r->maChienDich;
+            echo $b+1;
+        }
+    }
 
     public function get_info_ChienDich($id) {
         $info = $this->ChienDich_models->get_info($id);
         return $info;
     }
 
+    public function update_ChienDich_SLGui($id, $sl) {
+        $data = array();
+        $data['SLgui'] = $sl;
+
+        if ($this->ChienDich_models->update($id, $data)) {
+            echo 1;
+        } else {
+            echo 0;
+        }
+    }
+
     public function sendEmail_list() {
-        $count = 0;
+
         $id = $this->get_id_Cuoi();
         $cd = $this->get_info_ChienDich($id);
 
-        print_r($cd);
         $tenGui = $cd->tenGui;
         $id_maDSKH = $cd->maDanhSachKhachHang;
-        
+
         $id_maThu = $cd->maThu;
         $info_thuDienTu = $this->get_info_ThuDienTu($id_maThu);
         $info_DSKH = $this->get_KH_LKH($id_maDSKH);
@@ -57,24 +79,7 @@ class ChienDich_controllers extends CI_Controller {
         }
         fclose($myfile);
 
-       
-        // lấy danh sách email cần gửi
-        foreach ($info_DSKH as $k => $r) {
-            if($this->sendEmail($tenGui, $r->email, $r->tenKhachHang, $tieuDeThu, $content)){
-                $count++;
-            }
-        }
-        
-       // echo $count;   
-    }
-
-    public function get_KH_LKH($maLoaiKhachHang) {
-        $input['where'] = array('maLoaiKhachHang' => $maLoaiKhachHang);
-        $info = $this->khachHang_models->get_list($input);
-        return $info;
-    }
-
-    public function sendEmail($tenGui, $emailNhan, $tenNhan, $tieuDeThu, $content) {
+        // thiết lập gửi
         $in = $this->get_info_ThietLap();
         $mail = new PHPMailer();
         $mail->IsSMTP();
@@ -88,22 +93,27 @@ class ChienDich_controllers extends CI_Controller {
         $mail->CharSet = "utf-8";
         $mail->Username = $in->emailGui;
         $mail->Password = $in->matKhauEmail;
-        $mail->SetFrom($in->emailGui, $tenGui);
         $mail->Subject = $tieuDeThu;
+        $mail->SetFrom($in->emailGui, $tenGui);
         $mail->AddReplyTo($in->emailNhanTraLoi, $tenGui);
-        $mail->AddAddress($emailNhan, $tenNhan);
-        $mail->MsgHTML("haha");
+        $mail->MsgHTML($content);
 
+        $count = 0;
         //  $mail->AddAttachment("images/attact-tui.gif"); //Tập tin cần attach
-        //Tiến hành gửi email và kiểm tra lỗi
-
-        if (!$mail->Send()) {
-            //echo "Có lỗi khi gửi mail: " . $mail->ErrorInfo;
-            echo 0;
-        } else {
-            //echo "Đã gửi thư thành công!";
-            echo 1;
+        // lấy danh sách email cần gửi và gửi mail
+        foreach ($info_DSKH as $k => $r) {
+            $count++;
+            $mail->AddAddress($r->email, $r->tenKhachHang);
         }
+        $mail->Send();
+
+        $this->update_ChienDich_SLGui($id, $count);
+    }
+
+    public function get_KH_LKH($maLoaiKhachHang) {
+        $input['where'] = array('maLoaiKhachHang' => $maLoaiKhachHang);
+        $info = $this->khachHang_models->get_list($input);
+        return $info;
     }
 
     public function load() {
@@ -169,7 +179,7 @@ class ChienDich_controllers extends CI_Controller {
         $data['SLclickLink'] = 0;
 
         if ($this->ChienDich_models->create($data)) {
-            echo 1;
+            echo $this->sendEmail_list();
         } else {
             echo 0;
         }
@@ -191,6 +201,54 @@ class ChienDich_controllers extends CI_Controller {
             echo 1;
         } else {
             echo 0;
+        }
+    }
+
+    public function baoCao() {
+        $data['chienDich'] = $this->get_list_chienDich();
+        $this->load->view("admin/report_views", $data);
+    }
+
+    public function update_SLmo() {
+        $id = 31;
+        if ($id != "" || $id != null) {
+            $info = $this->get_info_ChienDich($id);
+            $slMo = $info->SLmo;
+            $data = array();
+            $data['SLmo'] = $slMo + 1;
+            if ($this->ChienDich_models->update($id, $data)) {
+                echo 1;
+            } else {
+                echo 0;
+            }
+        } else {
+            echo "kakaka";
+        }
+    }
+
+    public function update_SLclickLink($id, $link1, $link2 = "", $link3 = "", $link4 = "", $link5 = "") {
+        if ($id != "" || $id != null) {
+            $info = $this->get_info_ChienDich($id);
+            $SLclickLink = $info->SLclickLink;
+            $data = array();
+            $data['SLclickLink'] = $SLclickLink + 1;
+            $this->ChienDich_models->update($id, $data);
+            $path = $link1;
+            if ($link2 != "") {
+                $path = $path . "////" . $link2;
+                if ($link3 != "") {
+                    $path = $path."/".$link3;
+                    if ($link4 != "") {
+                        $path = $path ."/". $link4;
+                        if ($link5 != "") {
+                            $path = $path."/". $link5;
+                        }
+                    }
+                }
+            }
+            Redirect($path);
+        } else {
+            echo "lỗi";
         }
     }
 

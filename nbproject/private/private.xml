@@ -3,15 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/test/application/controllers/email_controllers.php</file>
-            <file>file:/C:/xampp/htdocs/test/application/views/admin/email_views.php</file>
-            <file>file:/C:/xampp/htdocs/test/application/controllers/sendEmail_controllers.php</file>
-            <file>file:/C:/xampp/htdocs/test/application/controllers/chienDich_controllers.php</file>
-            <file>file:/C:/xampp/htdocs/test/application/views/admin/tl5.php</file>
-            <file>file:/C:/xampp/htdocs/test/application/controllers/Welcome.php</file>
-            <file>file:/C:/xampp/htdocs/test/application/views/admin/templates_views.php</file>
-            <file>file:/C:/xampp/htdocs/test/application/views/admin/view_email.php</file>
-            <file>file:/C:/xampp/htdocs/test/application/views/admin/campaign_views.php</file>
+            <file>file:/C:/xampp/htdocs/EmailMarketing/application/views/admin/customer_views.php</file>
+            <file>file:/C:/xampp/htdocs/EmailMarketing/application/views/admin/tl5.php</file>
+            <file>file:/C:/xampp/htdocs/EmailMarketing/application/controllers/khachHang_controllers.php</file>
+            <file>file:/C:/xampp/htdocs/EmailMarketing/application/controllers/chienDich_controllers.php</file>
         </group>
     </open-files>
 </project-private>

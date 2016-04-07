@@ -9,7 +9,7 @@ class Welcome extends CI_Controller {
         
         $user_data = $this->session->userdata('login');
         if (!$user_data) {
-             $this->load->view('admin/view_email');
+             $this->load->view('admin/tl5');
         } else {
             $this->load->view('admin/home_views');
         }

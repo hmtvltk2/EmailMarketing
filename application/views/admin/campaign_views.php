@@ -15,7 +15,7 @@
                 <div class="right_col" role="main">
                     <div class="contet_main">
                         <div class="x_panel">
-                             <p class="loading"></p>
+                            <p class="loading"></p>
                             <div class="x_title">
                                 <h2><i class="fa fa-bullhorn"></i><small> Tạo mới chiến dịch</small></h2>
                                 <ul class="nav navbar-right panel_toolbox">
@@ -82,13 +82,14 @@
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Chọn thư gửi *</label>
                                         <div class="col-md-7 col-sm-7 col-xs-12">
                                             <select class="form-control timKhachHangTheoDanhSach maThuGui" required="" readonly="readonly">
+                                                <option value=""></option> 
                                                 <?php foreach ($thuDienTu as $r): ?>                                                
                                                     <option value=""><?php echo $r['maThu']; ?></option>                                                                                               
                                                 <?php endforeach ?>
                                             </select>                          
                                         </div>
                                         <div class="col-md-2 col-sm-2 col-xs-12">
-                                            <button class="btn btn-warning" style="padding-bottom: 4px;padding-top: 4px;margin-top: 2px">Tạo mới</button>
+                                            <a href="<?= base_url() ?>Templates_controllers/load"><button class="btn btn-warning" style="padding-bottom: 4px;padding-top: 4px;margin-top: 2px" type="button">Tạo mới</button></a>
                                         </div>
                                     </div>
                                     <div class="ln_solid"></div>
@@ -107,8 +108,8 @@
                                 <h2><i class="fa fa-envelope-o"></i><small> Danh sách thư đã tạo </small></h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li style="padding-right: 13px; padding-top: 7px"> Mã thư: </li>
-                                    <li> <select id="heard" class="form-control" required="" readonly="readonly">
-                                             <option value=""></option>
+                                    <li> <select class="form-control" required="" readonly="readonly">
+                                            <option value=""></option>
                                             <?php foreach ($thuDienTu as $r): ?>                                                
                                                 <option value=""><?php echo $r['maThu']; ?></option>                                                                                               
                                             <?php endforeach ?>
@@ -157,7 +158,7 @@
                         <div class="clearfix"></div>
                     </footer>
                 </div>
-
+                <div class="thu"></div>
                 <!-- /footer content -->
             </div>
             <!-- /page content -->
@@ -172,6 +173,7 @@
         $(document).ready(function () {
 
             $('#taoChienDich').submit(function (e) {
+
                 e.preventDefault();
                 var tenChienDich = $(".tenChienDich").val();
                 var ngay = $(".ngay").val();
@@ -183,20 +185,16 @@
                 $(".loading").show();
                 $.post("<?= base_url() ?>chienDich_controllers/insert_ChienDich", {tenChienDich: tenChienDich, ngay: ngay, tenGui: tenGui, emailGui: emailGui, maDSKH: maDSKH, lyDo: lyDo, maThuGui: maThuGui}, function (data, status)
                 {
-                    if (data == "1") {
-                         $(".loading").hide();
+                    $(".loading").hide();
+                    if (data == "0") {
+                    } else {
                         $('#show-success').click();
                         location.reload(true);
-                        // $(".emailKH1").val("");
-                        // $(".tenKH1").val("");
-                    } else {
-                        alert(data);
-                        // $('#show-info').click();
                     }
                 });
             });
 
-             $(".xoaEmail").click(function () {
+            $(".xoaEmail").click(function () {
                 var i10 = $(this).prop('checked');
                 if (i10 == false) {
                     return;
@@ -212,7 +210,7 @@
                             $.post("<?= base_url() ?>chienDich_controllers/delete_thuDienTu", {id: ma}, function (data, status)
                             {
                                 if (data == '1') {
-                                   $('#show-info').click();
+                                    $('#show-info').click();
                                     location.reload(true);
                                 } else
                                 {
@@ -231,7 +229,7 @@
                     }
                 }
             });
-            
+
 
             $('#show-alert').click(function () {
                 $("#notification-1").emerge({
@@ -252,6 +250,28 @@
             $('#show').click(function () {
                 $("#notification-4").emerge({
                     theme: 'emerge-base top-right success',
+                });
+            });
+
+            $(".maThuGui").change(function () {
+                var maThuGui = $(".maThuGui").find(":selected").html();
+                var macd = 1;
+                $.post("<?= base_url() ?>ChienDich_controllers/get_id_Cuoi_v", {}, function (data, status)
+                {
+                    macd = data;
+                });
+
+                $.post("<?= base_url() ?>SendEmail_controllers/get_Thu", {id: maThuGui}, function (data, status)
+                {
+                    $(".thu").hide();
+                    $(".thu").html(data);
+                    pat = $(".link_dinhKem").attr("name");
+                    pat = "<?= base_url() ?>ChienDich_controllers/update_SLclickLink/" + macd + "/" + pat;
+                    $(".link_dinhKem").attr("href",pat)
+                    $cont = $(".thu").html();
+                    $.post("<?= base_url() ?>sendEmail_controllers/update_Email", {content: $cont, id: maThuGui}, function (data, status)
+                    {
+                    });
                 });
             });
 

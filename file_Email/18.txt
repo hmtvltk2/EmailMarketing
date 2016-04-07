@@ -46,7 +46,7 @@
                                                                     <th>
                                                                         <div class="tt1" style="font-size: 21px; line-height: 30px; text-align: left;">Sub Section Title</div>
                                                                         <div class="ct1" style="line-height: 30px; font-weight: normal; text-align: left; width: 100%;">Hi mr Amet Nalassicote,
-                                                                            Thank you for ahn amet admass, re signed up to receive updates adipisicing elit.</div>
+Thank you for ahn amet admass, re signed up to receive updates adipisicing elit.</div>
                                                                         <p></p>
                                                                         
                                                                     </th>
@@ -229,6 +229,8 @@
                                             <p>Website : nhaSachInDigi.com</p>
                                             <p>Số điện thoại : 84 - 654 - 671 1</p>
                                             <p>Địa chỉ : Phường Linh Trung - Quận Thủ Đức - Tp HCM</p>
-                                            <p><a href="http://localhost:8080/EmailMarketing/ChienDich_controllers/update_SLclickLink/31" style="color: #337ab7">Click tại đây để theo dõi.</a></p>
+                                            <p><a href="#" style="color: rgb(51, 122, 183);" class="link_dinhKem" name="https://www.facebook.com">Click tại đây để biết thêm chi tiết !</a></p>
+                                            <p class="ms" style="color: #337ab7">Để biết thêm chi tiết, vui lòng thêm link đính kèm!</p>
+                                            <input type="url" class="form-control col-md-3 col-xs-3 link" style="width: 40%">
                                         </div>
                                     

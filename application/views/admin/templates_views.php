@@ -55,14 +55,16 @@
                                 <div class="col-md-10 col-xs-10" style="border-right: 1px solid #E6E9ED;">
                                     <div class="email_gui">
                                         <div>
-                                          <?php $this->load->view("admin/tl5"); ?>
+                                            <?php $this->load->view("admin/tl5"); ?>
                                         </div>
                                         <div class="chuKi" style="margin-left: 20px;">
                                             <p>Công ty : <?php echo $chuKi->tenCongTy ?></p>
                                             <p>Website : <?php echo $chuKi->websiteCongTy ?></p>
                                             <p>Số điện thoại : <?php echo $chuKi->soDienThoai ?></p>
                                             <p>Địa chỉ : <?php echo $chuKi->diaChiCongTy ?></p>
-                                            <p><a href="#" style="color: #337ab7">Click tại đây để theo dõi.</a></p>
+                                            <p><a href="#" style="color: #337ab7; display: none" class="link_dinhKem" name="" >Click tại đây để biết thêm chi tiết !</a></p>
+                                            <span class="ms" style="color: #337ab7">Để biết thêm chi tiết, vui lòng thêm link đính kèm!</span><br>
+                                            <input type="url" class="form-control col-md-3 col-xs-3 link" style="width: 40%" >
                                         </div>
                                     </div>
                                     <h4 class="loading"></h4>
@@ -178,38 +180,66 @@
         $(document).ready(function () {
             $('.luu_Mail').click(function () {
 
-                $(".noiDung").hide();
-                $(".noiDung").html($('.email_gui').html());
-
-                $(".tt1").html($(".tt1_").val());
-                $(".ct1").html($(".ct1_").val());
-
-                $(".tt2").html($(".tt2_").val());
-                $(".ct2").html($(".ct2_").val());
-                $(".ct22").html($(".ct22_").val());
-
-                $(".tt3").html($(".tt3_").val());
-                $(".ct3").html($(".ct3_").val());
-                $(".ct33").html($(".ct33_").val());
-
-                $(".noiDung #uploadimage1").remove();
-                $(".noiDung #uploadimage2").remove();
-                $(".noiDung textarea").remove();
-
-                content = $(".noiDung").html();
-
                 if ($(".tieuDeThu").val() == "" || $(".tenThu").val() == "")
                 {
-                    alert("Nhập đầy đủ thông tin!");
+                    $(".url_them").html("Nhập đầy đủ thông tin!");
+                    $('#show').click();
+                    return;
                 } else
                 {
+                    $(".noiDung").hide();
+                    $(".noiDung").html($('.email_gui').html());
+
+                    link = $(".link").val();
+                    if (link !== "")
+                    {
+                        var pat = $(".link_dinhKem").attr("name", link);
+                        $(".link_dinhKem").attr("href",link);
+                        $(".link_dinhKem").show();
+                    }
+
+                    $(".tt1").html($(".tt1_").val());
+                    $(".ct1").html($(".ct1_").val());
+
+                    $(".tt2").html($(".tt2_").val());
+                    $(".ct2").html($(".ct2_").val());
+                    $(".ct22").html($(".ct22_").val());
+
+                    $(".tt3").html($(".tt3_").val());
+                    $(".ct3").html($(".ct3_").val());
+                    $(".ct33").html($(".ct33_").val());
+
+                    $(".noiDung #uploadimage1").remove();
+                    $(".noiDung #uploadimage2").remove();
+                    $(".noiDung textarea").remove();
+                    $(".noiDung input").remove();
+                    $(".noiDung span").remove();
+
+                    $("#uploadimage1").remove();
+                    $("#uploadimage2").remove();
+                    $("textarea").remove();
+
+                    $(".tt1").show();
+                    $(".ct1").show();
+
+                    $(".tt2").show();
+                    $(".ct2").show();
+                    $(".ct22").show();
+
+                    $(".tt3").show();
+                    $(".ct3").show();
+                    $(".ct33").show();
+
+                    content = $(".noiDung").html();
                     tieuDeThu = $(".tieuDeThu").val();
                     tenThu = $(".tenThu").val();
-                     $('#show-success').click();
-                     $(".loading").show();
+
+                    $(".loading").show();
                     $.post("<?= base_url() ?>sendEmail_controllers/luuEmail", {content: content, tieuDeThu: tieuDeThu, tenThu: tenThu}, function (data, status)
                     {
                         $(".loading").hide();
+                        $('#show-success').click();
+                        location.reload(true);
                     });
                 }
             });
@@ -230,7 +260,6 @@
                     theme: 'emerge-base top-right success',
                 });
             });
-
             $('#show').click(function () {
                 $("#notification-4").emerge({
                     theme: 'emerge-base top-right success',
@@ -240,8 +269,8 @@
     </script>
 
 
-
     <div id="notification-1" class="notification ">Thao tác thất bại !</div>
     <div id="notification-2" class="notification ">Đã tồn tại !</div>
     <div id="notification-3" class="notification">Lưu thành công !</div>
+    <div id="notification-4" class="notification url_them"></div>
 </html>

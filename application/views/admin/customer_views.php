@@ -125,7 +125,7 @@
                                                 <div class="clearfix"></div>
                                             </div>
                                             <div class="x_content">
-                                                <form class="form-horizontal form-label-left input_mask" method="post">
+                                                <form class="form-horizontal form-label-left input_mask" id="themKhachHang1" method="post">
                                                     <div class="form-group">
                                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Mã khách hàng</label>
                                                         <div class="col-md-9 col-sm-9 col-xs-12">
@@ -148,7 +148,7 @@
                                                     <div class="form-group">
                                                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
                                                             <button type="reset" class="btn btn-primary rs1">Hủy</button>
-                                                            <button  type="submit" class="btn btn-success themKhachHang1">Lưu</button>
+                                                            <button  type="submit" class="btn btn-success">Lưu</button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -417,8 +417,8 @@
                                 "<td>" + mang['email'] + "</td>" +
                                 "<td>" + mang['tenKhachHang'] + "</td>";
                         var h = " <td><a href='#' data-toggle='modal' name='" + mang['maKhachHang'] + "' data-target='#myModal' class='suaKhachHang'>sửa</a></td>' ";
-                         var k = " <td><input type='checkbox' class='xoaKhachHang' name='" + mang['maKhachHang'] + "'></td></tr>";
-                        $(".kh").append(html+h+k);
+                        var k = " <td><input type='checkbox' class='xoaKhachHang' name='" + mang['maKhachHang'] + "'></td></tr>";
+                        $(".kh").append(html + h + k);
                         a++;
                     });
                 });
@@ -488,30 +488,29 @@
                 }
             });
 
-            $(".themKhachHang1").click(function () {
+            $("#themKhachHang1").on('submit', (function (e) {
+
+                e.preventDefault();
+                var tenkh = $(".tenKH1").val();
+                var email = $(".emailKH1").val();
+                var maloai = $(".maLoaiKhachHang").find(":selected").html();
+
+                if (email != "")
                 {
-                    var tenkh = $(".tenKH1").val();
-                    var email = $(".emailKH1").val();
-                    var maloai = $(".maLoaiKhachHang").find(":selected").html();
-
-                    if (email != "")
-                    {
-                        if (reg_mail.test(email)) {
-                            $.post("<?= base_url() ?>KhachHang_controllers/insert_KH1", {ten: tenkh, email: email, maLoaiKhachHang: maloai}, function (data, status)
-                            {
-                                if (data == 1) {
-                                    $('#show-success').click();
-                                    location.reload(true);
-                                } else {
-                                    $('#show-info').click();
-
-                                    $(".emailKH1").val("");
-                                }
-                            });
-                        }
+                    if (reg_mail.test(email)) {
+                        $.post("<?= base_url() ?>KhachHang_controllers/insert_KH1", {ten: tenkh, email: email, maLoaiKhachHang: maloai}, function (data, status)
+                        {
+                            if (data == 1) {
+                                $('#show-success').click();
+                                location.reload(true);
+                            } else {
+                                $('#show-info').click();
+                                $(".emailKH1").val("");
+                            }
+                        });
                     }
                 }
-            });
+            }));
 
             $(".themKhachHang2").submit(function (e) {
 

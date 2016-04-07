@@ -28,7 +28,7 @@
                                                             <table>
                                                                 <tbody><tr>
                                                                     <th> 
-                                                                        <center><div id="image_preview"><img id="previewing1" src="http://localhost:8080/EmailMarketing/html/img/548x200.png" alt=" "></div></center>
+                                                                        <center><div id="image_preview"><img id="previewing1" src="http://localhost:8080/EmailMarketing/html/img/548x200.png"></div></center>
                                                                         <center></center>
                                                                     </th>
                                                                 </tr>
@@ -56,7 +56,7 @@
                                                         <th class="small-12 large-5 columns last">
                                                             <table>
                                                                 <tbody><tr>                                                                   
-                                                                    <th><center><div id="image_preview"><img id="previewing2" src="http://localhost:8080/EmailMarketing/html/img/250x200.png" alt=" "></div></center>
+                                                                    <th><center><div id="image_preview"><img id="previewing2" src="http://localhost:8080/EmailMarketing/html/img/250x200.png"></div></center>
                                                                         <center>
                                                                             
                                                                         </center>                                                                     
@@ -114,6 +114,7 @@
         <script type="text/javascript">
             $(document).ready(function (e) {
 
+            alert("hahaha");
 //                $.ajax({
 //                    url: "http://localhost:8080/EmailMarketing/chienDich_controllers/update_SLmo",
 //                    type: "POST",
@@ -229,6 +230,6 @@
                                             <p>Website : nhaSachInDigi.com</p>
                                             <p>Số điện thoại : 84 - 654 - 671 1</p>
                                             <p>Địa chỉ : Phường Linh Trung - Quận Thủ Đức - Tp HCM</p>
-                                            <p><a href="http://localhost:8080/EmailMarketing/ChienDich_controllers/update_SLclickLink/31" style="color: #337ab7">Click tại đây để theo dõi.</a></p>
+                                            <p><a href="http://localhost:8080/EmailMarketing/ChienDich_controllers/update_SLmo" style="color: #337ab7">Click tại đây để theo dõi.</a></p>
                                         </div>
                                     

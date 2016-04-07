@@ -29,8 +29,8 @@
                     <li><a href="<?=base_url()?>Templates_controllers/load"><i class="fa fa-envelope-o"></i> Thư điện tử </a>
                     </li>
                     <li><a href="<?=base_url()?>ThietLap_controllers/load"><i class="fa fa-desktop"></i> Thiết lập </a>
-                    </li>
-                    <li><a><i class="fa fa-bar-chart-o"></i> Báo cáo <span class="fa fa-chevron-down"></span></a>
+                    </li>                 
+                    <li><a href="<?=base_url()?>ChienDich_controllers/baoCao"><i class="fa fa-bar-chart-o"></i> Báo cáo <span class="fa fa-chevron-down"></span></a>
                     <li><a><i class="fa fa-home"></i> Trang chủ <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu" style="display: none">
                             <li><a href="index.html">Dashboard</a>

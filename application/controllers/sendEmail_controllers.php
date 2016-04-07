@@ -56,7 +56,6 @@ class SendEmail_controllers extends CI_Controller {
 
     public function luuEmail() {
         $content = $this->input->post('content');
-        echo $content;
         $tieuDeThu = $this->input->post('tieuDeThu');
         $tenThu = $this->input->post('tenThu');
         $idcuoi = $this->get_id_Cuoi();
@@ -92,6 +91,28 @@ class SendEmail_controllers extends CI_Controller {
 
         $data["myfile"] = fopen($p, "r") or die("Unable to open file!");
         $this->load->view('admin/view_email', $data);
+    }
+
+    public function get_Thu(){
+        $id = $this->input->post('id');
+        $tenfile = "file_Email/" . $id . ".txt";
+        
+       $myfile = fopen($tenfile, "r") or die("Unable to open file!");
+        $content = "";
+        while (!feof($myfile)) {
+            $content = $content . fgets($myfile);
+        }
+        fclose($myfile);
+        echo $content;
+    }
+    
+     public function update_Email() {
+        $content = $this->input->post('content');
+        $id = $this->input->post('id');
+        $tenfile = "file_Email/" . $id . ".txt";
+        $myfile = fopen($tenfile, "w") or die("Unable to open file!");
+        fwrite($myfile, $content);
+        fclose($myfile);
     }
 
 }

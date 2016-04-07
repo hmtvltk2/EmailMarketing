@@ -32,8 +32,7 @@ class KhachHang_controllers extends CI_Controller {
         $data2['ds2'] = $this->get_list_KH_LKH($id);
         $this->load->view("admin/customer_views", $data2);
     }
-
-    
+   
     public function load() {
         // danh sách đã tạo
         $data1 = $this->get_list_LKH();
