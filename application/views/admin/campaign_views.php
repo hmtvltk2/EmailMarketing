@@ -255,26 +255,23 @@
 
             $(".maThuGui").change(function () {
                 var maThuGui = $(".maThuGui").find(":selected").html();
-                var macd = 1;
                 $.post("<?= base_url() ?>ChienDich_controllers/get_id_Cuoi_v", {}, function (data, status)
                 {
                     macd = data;
-                });
-
-                $.post("<?= base_url() ?>SendEmail_controllers/get_Thu", {id: maThuGui}, function (data, status)
-                {
-                    $(".thu").hide();
-                    $(".thu").html(data);
-                    pat = $(".link_dinhKem").attr("name");
-                    pat = "<?= base_url() ?>ChienDich_controllers/update_SLclickLink/" + macd + "/" + pat;
-                    $(".link_dinhKem").attr("href",pat)
-                    $cont = $(".thu").html();
-                    $.post("<?= base_url() ?>sendEmail_controllers/update_Email", {content: $cont, id: maThuGui}, function (data, status)
+                    $.post("<?= base_url() ?>SendEmail_controllers/get_Thu", {id: maThuGui}, function (data, status)
                     {
+                        $(".thu").hide();
+                        $(".thu").html(data);
+                        pat = $(".link_dinhKem").attr("name");
+                        pat = "<?= base_url() ?>ChienDich_controllers/update_SLclickLink/" + macd + "/" + pat;
+                        $(".link_dinhKem").attr("href", pat)
+                        $cont = $(".thu").html();
+                        $.post("<?= base_url() ?>sendEmail_controllers/update_Email", {content: $cont, id: maThuGui}, function (data, status)
+                        {
+                        });
                     });
                 });
             });
-
         });
 
     </script>

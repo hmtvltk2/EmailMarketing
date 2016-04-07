@@ -543,16 +543,17 @@
                     cache: false,
                     processData: false,
                     success: function (data) {
-
+                        $(".loading").hide();
                         if (data == "Chọn lại text!")
                         {
-                            var html = "Chọn lại text!";
+                            html = "Chọn lại text!";
+                             $(".url_them").html(html);
+                              $('#show').click();
                             return;
                         } else
                         {
                             html = "Đã thêm " + data + " khách hàng!";
                             $(".url_them").html(html);
-                            $(".loading").hide();
                             $('#show').click();
                             location.reload(true);
                         }

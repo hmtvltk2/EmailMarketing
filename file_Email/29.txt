@@ -229,8 +229,8 @@ Thank you for ahn amet admass, re signed up to receive updates adipisicing elit.
                                             <p>Website : nhaSachInDigi.com</p>
                                             <p>Số điện thoại : 84 - 654 - 671 1</p>
                                             <p>Địa chỉ : Phường Linh Trung - Quận Thủ Đức - Tp HCM</p>
-                                            <p><a href="http://localhost:8080/EmailMarketing/ChienDich_controllers/update_SLclickLink/1/https://www.google.com/#q=attr(+href+)" style="color: rgb(51, 122, 183);" class="link_dinhKem" name="https://www.google.com/#q=attr(+href+)">Click tại đây để biết thêm chi tiết !</a></p>
-                                            <p class="ms" style="color: #337ab7">Để biết thêm chi tiết, vui lòng thêm link đính kèm!</p>
+                                            <p><a href="http://localhost:8080/EmailMarketing/ChienDich_controllers/update_SLclickLink/40/https://www.facebook.com/" style="color: rgb(51, 122, 183);" class="link_dinhKem" name="https://www.facebook.com/">Click tại đây để biết thêm chi tiết !</a></p>
+                                            <br>
                                             
                                         </div>
                                     

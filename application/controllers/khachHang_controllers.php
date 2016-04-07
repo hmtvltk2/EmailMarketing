@@ -32,7 +32,7 @@ class KhachHang_controllers extends CI_Controller {
         $data2['ds2'] = $this->get_list_KH_LKH($id);
         $this->load->view("admin/customer_views", $data2);
     }
-   
+
     public function load() {
         // danh sách đã tạo
         $data1 = $this->get_list_LKH();
@@ -236,6 +236,43 @@ class KhachHang_controllers extends CI_Controller {
             }
         } else {
             return FALSE;
+        }
+    }
+
+    public function insert_KH4() {
+        $count = 0;
+        if (isset($_FILES["file1"]["type"])) {
+            $validextensions = array("txt");
+            $temporary = explode(".", $_FILES["file1"]["name"]);
+            $file_extension = end($temporary);
+            if (in_array($file_extension, $validextensions)) {
+
+                if ($_FILES["file1"]["error"] > 0) {
+                    echo "Gặp sự cố khi chọn file!";
+                } else {
+                    if (file_exists("uploads/" . $_FILES["file1"]["name"])) {
+                        echo "";
+                    } else {
+                        $sourcePath = $_FILES['file1']['tmp_name']; // Storing source path of the file in a variable
+                        $targetPath = "uploads/" . $_FILES['file1']['name']; // Target path where file is to be stored
+                        move_uploaded_file($sourcePath, $targetPath); // Moving Uploaded file
+                        echo "";
+                    }
+                }
+
+                $pa = "uploads/" . $_FILES['file1']['name'];
+                $myfile = fopen($pa, "r") or die("Unable to open file!");
+                while (!feof($myfile)) {
+                    $email = fgets($myfile);
+                    if ($this->insert_KH($email, $_POST['lala'])) {
+                        $count++;
+                    }
+                }
+                fclose($myfile);
+                echo $count;
+            } else {
+                echo "Chọn lại text!";
+            }
         }
     }
 
