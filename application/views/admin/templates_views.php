@@ -17,13 +17,13 @@
                         <div>
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2><i class="fa fa-pencil-square-o"></i><small> Tạo thư mới</small></h2>
-                                    <ul class="nav navbar-right panel_toolbox">
-                                    </ul>
+                                     <h2><i class="fa fa-pencil-square-o"></i><small> Tạo thư mới</small></h2>
+
+                                    <ul class="nav navbar-right panel_toolbox"></ul>
                                     <div class="clearfix"></div>
-                                </div>
-                                <div class="x_content">
-                                    <form class="form-horizontal form-label-left input_mask" method="post">
+                                </div>    
+                                <div class="col-md-10 col-xs-10" style="border-right: 1px solid #E6E9ED;">
+                                      <form class="form-horizontal form-label-left input_mask" method="post">
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Mã thư *</label>
                                             <div class="col-md-7 col-sm-7 col-xs-12">
@@ -42,17 +42,8 @@
                                                 <input type="text" class="form-control col-md-7 col-xs-12 tieuDeThu" required="" >
                                             </div>
                                         </div>
-                                    </form>                              
-                                </div>
-                            </div>
-                            <div class="x_panel">
-                                <div class="x_title">
-                                    <h2><small>Nội dung</small></h2>
-
-                                    <ul class="nav navbar-right panel_toolbox"></ul>
-                                    <div class="clearfix"></div>
-                                </div>    
-                                <div class="col-md-10 col-xs-10" style="border-right: 1px solid #E6E9ED;">
+                                          <div style="border-bottom: 2px solid #E6E9ED;margin-top: 20px;margin-bottom:15px;"></div>
+                                    </form>     
                                     <div class="email_gui">
                                         <div>
                                             <?php $this->load->view("admin/tl5"); ?>
@@ -79,7 +70,7 @@
                                             </div>
                                             <div class="col-xs-12 bottom text-center">
                                                 <div class="col-xs-12 col-sm-12 emphasis">
-                                                    <button type="button" class="btn btn-warning btn-xs" style="float: right"> <i class="fa fa-user"></i> Chọn </button>
+                                                    <button type="button" class="btn  btn-xs" style="float: right;background-color: rgb(234, 179, 17);color: white"> <i class="fa fa-user"></i> Chọn </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -92,7 +83,7 @@
                                             </div>
                                             <div class="col-xs-12 bottom text-center">
                                                 <div class="col-xs-12 col-sm-12 emphasis">
-                                                    <button type="button" class="btn btn-warning btn-xs" style="float: right"> <i class="fa fa-user"></i> Chọn </button>
+                                                    <button type="button" class="btn btn-xs" style="float: right;background-color:rgb(47, 148, 74) ;color: white"> <i class="fa fa-user"></i> Chọn </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -105,7 +96,7 @@
                                             </div>
                                             <div class="col-xs-12 bottom text-center">
                                                 <div class="col-xs-12 col-sm-12 emphasis">
-                                                    <button type="button" class="btn btn-warning btn-xs" style="float: right"> <i class="fa fa-user"></i> Chọn </button>
+                                                    <button type="button" class="btn btn-xs" style="float: right;background-color: rgb(59, 107, 187);color: white"> <i class="fa fa-user"></i> Chọn </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -118,7 +109,7 @@
                                             </div>
                                             <div class="col-xs-12 bottom text-center">
                                                 <div class="col-xs-12 col-sm-12 emphasis">
-                                                    <button type="button" class="btn btn-warning btn-xs" style="float: right"> <i class="fa fa-user"></i> Chọn </button>
+                                                    <button type="button" class="btn btn-xs" style="float: right;background-color: rgb(197, 58, 46);color: white"> <i class="fa fa-user"></i> Chọn </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -131,7 +122,7 @@
                                             </div>
                                             <div class="col-xs-12 bottom text-center">
                                                 <div class="col-xs-12 col-sm-12 emphasis">
-                                                    <button type="button" class="btn btn-warning btn-xs" style="float: right"> <i class="fa fa-user"></i> Chọn </button>
+                                                    <button type="button" class="btn btn-xs" style="float: right;background-color:rgb(47, 148, 74) ;color: white"> <i class="fa fa-user"></i> Chọn </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -144,7 +135,7 @@
                                             </div>
                                             <div class="col-xs-12 bottom text-center">
                                                 <div class="col-xs-12 col-sm-12 emphasis">
-                                                    <button type="button" class="btn btn-warning btn-xs" style="float: right"> <i class="fa fa-user"></i> Chọn </button>
+                                                    <button type="button" class="btn btn-xs" style="float: right;background-color: rgb(197, 58, 46);color: white"> <i class="fa fa-user"></i> Chọn </button>
                                                 </div>
                                             </div>
                                         </div>

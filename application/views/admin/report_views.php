@@ -14,13 +14,14 @@
                 <!-- page content -->
                 <div class="right_col" role="main">
                     <div class="contet_main">
+
                         <div class="x_panel" style="margin-top: 20px">
                             <div class="x_title">
-                                <h2><i class="fa fa-bullhorn"></i><small> Chiến dịch </small></h2>
+                                <h2><i class="fa fa-bar-chart-o"></i><small> Báo cáo </small></h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li style="padding-right: 13px; padding-top: 7px"> Mã chiến dịch: </li>
-                                    <li> <select id="heard" class="form-control" required="" readonly="readonly">
-                                            <option value=""></option>
+                                    <li> 
+                                        <select id="heard" class="form-control maChienDich_change" required="" readonly="readonly">
                                             <?php foreach ($chienDich as $r): ?>                                                
                                                 <option value=""><?php echo $r->maChienDich; ?></option>                                                                                               
                                             <?php endforeach ?>
@@ -30,10 +31,139 @@
                                 </ul>
                                 <div class="clearfix"></div>
                             </div>
+                            <div class="x_content">
+
+                                <div class="row top_tiles">
+                                    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                        <div class="tile-stats">
+                                            <div class="icon"><i class="fa fa-check-square-o"></i>
+                                            </div>
+                                            <div class="count slg_bc"><?php echo $info->SLgui ?></div>
+
+                                            <h3>Gửi thành công</h3>
+                                            <p>Số lượng khách hàng gửi thành công.</p>
+                                        </div>
+                                    </div>
+                                    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                        <div class="tile-stats">
+                                            <div class="icon"><i class="fa fa-comments-o"></i>
+                                            </div>
+                                            <div class="count slm_bc"><?php echo $info->SLmo ?></div>
+
+                                            <h3>Thư đã mở</h3>
+                                            <p>Update số lượng người đọc thư.</p>
+                                        </div>
+                                    </div>
+                                    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                        <div class="tile-stats">
+                                            <div class="icon"><i class="fa fa-paper-plane-o"></i>
+                                            </div>
+                                            <div class="count"><div class="count sltc_bc"><?php echo $info->SLclickLink ?></div></div>
+
+                                            <h3>Người truy cập</h3>
+                                            <p>Update số lượng người truy cập link.</p>
+                                        </div>
+                                    </div>
+                                    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                        <div class="tile-stats">
+                                            <div class="icon"><i class="fa fa-thumbs-o-down"></i>
+                                            </div>
+                                            <div class="count sltb_bc"><?php echo $info->SLgui - $info->SLmo ?></div>
+
+                                            <h3>Lượng thư bị hỏng</h3>
+                                            <p>Số lượng thư chưa mở hoặc gửi thất bại.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-top:45px;">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left;">Mã chiến dịch : </label>
+                                                    <label class="control-label col-md-9 col-sm-9 col-xs-12 maChienDich" style="text-align: left;font-weight: 100;margin-bottom: 10px;"><?php echo $info->maChienDich ?></label>
+                                                </div>
+                                            </div>
+                                            <div class="item form-group">
+                                                <div class="row">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left;">Tên chiến dịch :  </label>
+                                                    <label class="control-label col-md-9 col-sm-9 col-xs-12 tenChienDich" style="text-align: left;font-weight: 100;margin-bottom: 10px;"><?php echo $info->tenChienDich ?></label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left;">Ngày gửi : </label>
+                                                    <label class="control-label col-md-9 col-sm-9 col-xs-12 ngay" style="text-align: left;font-weight: 100;margin-bottom: 10px;"><?php echo $info->ngayGui ?></label>
+                                                </div>
+                                            </div>
+                                            <div class="item form-group">
+                                                <div class="row">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left;">Tên gửi : </label>
+                                                    <label class="control-label col-md-9 col-sm-9 col-xs-12 tenGui" style="text-align: left;font-weight: 100;margin-bottom: 10px;"><?php echo $info->tenGui ?></label>
+
+                                                </div></div>
+                                            <div class="item form-group">
+                                                <div class="row">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left;">Email gửi : </label>
+                                                    <label class="control-label col-md-9 col-sm-9 col-xs-12 emailGui" style="text-align: left;font-weight: 100;margin-bottom: 10px;"><?php echo $info->emailGui ?></label>
+                                                </div>
+                                            </div>
+                                            <div class="item form-group">
+                                                <div class="row">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left;">Khách hàng : </label>
+                                                    <label class="control-label col-md-9 col-sm-9 col-xs-12 maDSKH" style="text-align: left;font-weight: 100;margin-bottom: 10px;"><?php echo $info->maDanhSachKhachHang ?></label>
+                                                </div>
+                                            </div>
+                                            <div class="item form-group">
+                                                <div class="row">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left;">Thư gửi : </label>
+                                                    <label class="control-label col-md-9 col-sm-9 col-xs-12 thu" style="text-align: left;font-weight: 100;margin-bottom: 10px;"><?php echo $info->maThu ?></label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <section>
+                                            <ul id="chart">
+
+                                                <li title="<?php echo ($info->SLmo * 100 / $info->SLgui) ?>" class="m_1">
+                                                    <span class="bar" style="background: #3B6BBB;color: white;padding-left: 10px;padding-top: 7px;">Thư đã mở</span>
+                                                    <span class="percent"></span>
+                                                </li>
+
+                                                <li title="<?php echo ($info->SLclickLink * 100 / $info->SLgui) ?>" class="m_2">
+                                                    <span class="bar" style="background: #C53A2E ;color: white;padding-left: 10px;padding-top: 7px;">Người truy cập link</span>
+                                                    <span class="percent"></span>
+                                                </li>
+                                                <li title="<?php echo (($info->SLgui - $info->SLmo) * 100 / $info->SLgui) ?>" class="m_3">
+                                                    <span class="bar" style="background: #2F944A;color: white;padding-left: 10px;padding-top: 7px;">Lượng thư bị hỏng</span>
+                                                    <span class="percent"></span>
+                                                </li>
+                                                <li title="100" class="m_4">
+                                                    <span class="bar" style="background: #EAB311;color: white;padding-left: 10px;padding-top: 5px;">Gửi thành công</span>
+                                                    <span class="percent"></span>
+                                                </li>
+                                            </ul>
+
+                                        </section>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="x_panel" style="margin-top: 20px">
+                            <div class="x_title">
+                                <h2><i class="fa fa-bullhorn"></i><small> Chiến dịch </small></h2>
+                                <div class="clearfix"></div>
+                            </div>
                             <div class="x_content" style="height: 400px; overflow-x: hidden">
                                 <table class="table table-striped responsive-utilities jambo_table bulk_action">
                                     <thead>
-                                        <tr class="headings">
+                                        <tr class="headings" style="background-color: #DEF0D8;color: black">
                                             <th class="column-title">Mã</th>
                                             <th class="column-title">Mã thư</th>
                                             <th class="column-title">Mã DSKH</th>
@@ -41,10 +171,7 @@
                                             <th class="column-title">Tên chiến dịch</th>
                                             <th class="column-title">Người gửi</th>
                                             <th class="column-title">Email gửi</th>
-                                            <th class="column-title">SL gửi</th>
-                                            <th class="column-title">SL mở</th>
-                                            <th class="column-title">SL click link</th>
-                                            <th class="column-title"><i class="fa fa-trash-o"></i></th>
+                                            <th class="column-title">#</th>
                                         </tr>
                                     </thead>
 
@@ -57,11 +184,8 @@
                                                 <td class=" "><?php echo $r->ngayGui; ?></td>
                                                 <td class=" "><?php echo $r->tenChienDich; ?></td>
                                                 <td class=" "><?php echo $r->tenGui; ?></td>
-                                                <td class=" "><?php echo $r->emailGui; ?></td>
-                                                <td class=" "><?php echo $r->SLgui; ?></td>
-                                                <td class=" "><?php echo $r->SLmo; ?></td>
-                                                <td class=" "><?php echo $r->SLclickLink; ?></td>                                   
-                                                <td><input type="checkbox" class="xoaEmail" name="<?php echo $r->maChienDich; ?>" id="<?php echo $r->maChienDich; ?>"></td>                                                                                    
+                                                <td class=" "><?php echo $r->emailGui; ?></td>                                 
+                                                <td><a class="a" href="#" style="border: none" name="<?php echo $r->maChienDich; ?>" id="<?php echo $r->maChienDich; ?>">xem</a></td>                                                                                    
                                             </tr>
                                         <?php endforeach ?>
                                     </tbody>
@@ -93,33 +217,94 @@
     <script type="text/javascript" >
         $(document).ready(function () {
 
-            $('#show-alert').click(function () {
-                $("#notification-1").emerge({
-                    theme: 'emerge-base top-right alert',
-                });
-            });
-            $('#show-info').click(function () {
-                $("#notification-2").emerge({
-                    theme: 'emerge-base top-right info',
-                });
-            });
-            $('#show-success').click(function () {
-                $("#notification-3").emerge({
-                    theme: 'emerge-base top-right success',
+            $(function () {
+                $('#chart li').each(function () {
+                    var pc = $(this).attr('title');
+                    pc = pc > 100 ? 100 : pc;
+                    $(this).children('.percent').html(pc + '%');
+                    var ww = $(this).width();
+                    var len = parseInt(ww, 10) * parseInt(pc, 10) / 100;
+                    $(this).children('.bar').animate({'width': len + 'px'}, 1500);
                 });
             });
 
-            $('#show').click(function () {
-                $("#notification-4").emerge({
-                    theme: 'emerge-base top-right success',
+
+            $(".maChienDich_change").change(function () {
+                ma = $(this).find(":selected").html();
+
+                $.post("<?= base_url() ?>ChienDich_controllers/thayDoiMa", {id: ma}, function (data, status)
+                {
+                    mang = $.parseJSON(data);
+                    $(".slg_bc").html(mang['SLgui']);
+                    $(".slm_bc").html(mang['SLmo']);
+                    $(".sltc_bc").html(mang['SLclickLink']);
+                    $(".sltb_bc").html(mang['SLgui'] - mang['SLmo']);
+
+                    $(".maChienDich").html(mang['maChienDich']);
+                    $(".tenChienDich").html(mang['tenChienDich']);
+                    $(".ngay").html(mang['ngayGui']);
+                    $(".tenGui").html(mang['tenGui']);
+                    $(".emailGui").html(mang['emailGui']);
+                    $(".maDSKH").html(mang['maDanhSachKhachHang']);
+                    $(".thu").html(mang['maThu']);
+
+                    a = mang['SLmo'] * 100 / mang['SLgui'];
+                    $(".m_1").attr('title', a);
+                    a = mang['SLclickLink'] * 100 / mang['SLgui'];
+                    $(".m_2").attr('title', a);
+                    a = (mang['SLgui'] - mang['SLmo']) * 100 / mang['SLgui'];
+                    $(".m_3").attr('title', a);
+
+                    $('#chart li').each(function () {
+                        var pc = $(this).attr('title');
+                        pc = pc > 100 ? 100 : pc;
+                        $(this).children('.percent').html(pc + '%');
+                        var ww = $(this).width();
+                        var len = parseInt(ww, 10) * parseInt(pc, 10) / 100;
+                        $(this).children('.bar').animate({'width': len + 'px'}, 1500);
+                    });
                 });
             });
+
+             $(".a").click(function () {
+                 id = $(this).attr('name');
+                
+                  $.post("<?= base_url() ?>ChienDich_controllers/thayDoiMa", {id: id}, function (data, status)
+                {
+                    mang = $.parseJSON(data);
+                    $(".slg_bc").html(mang['SLgui']);
+                    $(".slm_bc").html(mang['SLmo']);
+                    $(".sltc_bc").html(mang['SLclickLink']);
+                    $(".sltb_bc").html(mang['SLgui'] - mang['SLmo']);
+
+                    $(".maChienDich").html(mang['maChienDich']);
+                    $(".tenChienDich").html(mang['tenChienDich']);
+                    $(".ngay").html(mang['ngayGui']);
+                    $(".tenGui").html(mang['tenGui']);
+                    $(".emailGui").html(mang['emailGui']);
+                    $(".maDSKH").html(mang['maDanhSachKhachHang']);
+                    $(".thu").html(mang['maThu']);
+
+                    a = mang['SLmo'] * 100 / mang['SLgui'];
+                    $(".m_1").attr('title', a);
+                    a = mang['SLclickLink'] * 100 / mang['SLgui'];
+                    $(".m_2").attr('title', a);
+                    a = (mang['SLgui'] - mang['SLmo']) * 100 / mang['SLgui'];
+                    $(".m_3").attr('title', a);
+
+                    $('#chart li').each(function () {
+                        var pc = $(this).attr('title');
+                        pc = pc > 100 ? 100 : pc;
+                        $(this).children('.percent').html(pc + '%');
+                        var ww = $(this).width();
+                        var len = parseInt(ww, 10) * parseInt(pc, 10) / 100;
+                        $(this).children('.bar').animate({'width': len + 'px'}, 1500);
+                    });
+                });
+                
+             });
 
         });
 
     </script>
-
-    <div id="notification-1" class="notification ">Thao tác thất bại !</div>
-    <div id="notification-2" class="notification ">Đã cập nhật !</div>
-    <div id="notification-3" class="notification">Gửi thành công !</div>
 </html>

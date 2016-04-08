@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/EmailMarketing/application/controllers/khachHang_controllers.php</file>
-            <file>file:/C:/xampp/htdocs/EmailMarketing/application/controllers/sendEmail_controllers.php</file>
+            <file>file:/C:/xampp/htdocs/EmailMarketing/application/views/admin/login_views.php</file>
+            <file>file:/C:/xampp/htdocs/EmailMarketing/application/views/admin/templates_views.php</file>
+            <file>file:/C:/xampp/htdocs/EmailMarketing/application/controllers/login_controllers.php</file>
+            <file>file:/C:/xampp/htdocs/EmailMarketing/application/controllers/Welcome.php</file>
             <file>file:/C:/xampp/htdocs/EmailMarketing/application/controllers/chienDich_controllers.php</file>
-            <file>file:/C:/xampp/htdocs/EmailMarketing/application/controllers/uploadImages.php</file>
         </group>
     </open-files>
 </project-private>

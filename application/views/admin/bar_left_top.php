@@ -7,7 +7,7 @@
         <!-- menu prile quick info -->
         <div class="profile">
             <div class="profile_pic">
-                <img src="<?=base_url()?>html/images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="<?= base_url() ?>html/img/img.jpg" alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
                 <span>Welcome,</span>
@@ -21,26 +21,19 @@
             <div class="menu_section">
                 <h3>Quản lý chung</h3>
                 <ul class="nav side-menu">
+                    <li><a href="<?=base_url()?>TrangChu_controllers/load"><i class="fa fa-home"></i> Trang chủ </a>
+                    </li>
                     <li><a href="<?=base_url()?>KhachHang_controllers/load" ><i class="fa fa-users"></i> Khách hàng</a>
+                    </li>
+                    <li><a href="<?=base_url()?>Templates_controllers/load"><i class="fa fa-cut"></i> Template </a>
+                    </li>
+                    <li><a href="<?=base_url()?>ThuDienTu_controllers/load"><i class="fa fa-envelope-o"></i> Thư điện tử </a>
                     </li>
                     <li><a href="<?=base_url()?>ChienDich_controllers/load"><i class="fa fa-table"></i> Chiến dịch</a>
                     </li>
-
-                    <li><a href="<?=base_url()?>Templates_controllers/load"><i class="fa fa-envelope-o"></i> Thư điện tử </a>
-                    </li>
                     <li><a href="<?=base_url()?>ThietLap_controllers/load"><i class="fa fa-desktop"></i> Thiết lập </a>
                     </li>                 
-                    <li><a href="<?=base_url()?>ChienDich_controllers/baoCao"><i class="fa fa-bar-chart-o"></i> Báo cáo <span class="fa fa-chevron-down"></span></a>
-                    <li><a><i class="fa fa-home"></i> Trang chủ <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu" style="display: none">
-                            <li><a href="index.html">Dashboard</a>
-                            </li>
-                            <li><a href="index2.html">Dashboard2</a>
-                            </li>
-                            <li><a href="index3.html">Dashboard3</a>
-                            </li>
-                        </ul>
-                    </li>
+                    
                 </ul>
                 </li>
                 </ul>
@@ -50,16 +43,16 @@
 
         <!-- /menu footer buttons -->
         <div class="sidebar-footer hidden-small">
-            <a data-toggle="tooltip" data-placement="top" title="Settings">
+            <a href="<?=base_url()?>ThietLap_controllers/load" data-toggle="tooltip" data-placement="top" title="Thiết lập">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
             </a>
             <a data-toggle="tooltip" data-placement="top" title="FullScreen">
                 <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
             </a>
-            <a data-toggle="tooltip" data-placement="top" title="Lock">
+            <a data-toggle="tooltip" data-placement="top" title="Trợ giúp">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
             </a>
-            <a data-toggle="tooltip" data-placement="top" title="Logout">
+            <a href="<?= base_url() ?>Login_controllers/logout" data-toggle="tooltip" data-placement="top" title="Đăng xuất">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
             </a>
         </div>
@@ -78,22 +71,20 @@
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        <img src="<?=base_url()?>html/images/img.jpg" alt="">Admin
+                        <img src="<?= base_url() ?>html/img/img.jpg" alt="">Admin
                         <span class=" fa fa-angle-down"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
-                        <li><a href="javascript:;">Thông tin</a>
-                        </li>
                         <li>
-                            <a href="javascript:;">
-                                <span class="badge bg-red pull-right">50%</span>
+                            <a href="<?=base_url()?>ThietLap_controllers/load">
+                                <span class="badge bg-red pull-right">100%</span>
                                 <span>Thiết lập</span>
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:;">Trợ giúp</a>
+                            <a href="#">Trợ giúp</a>
                         </li>
-                        <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i>Đăng xuất</a>
+                        <li><a href="<?= base_url() ?>Login_controllers/logout"><i class="fa fa-sign-out pull-right"></i>Đăng xuất</a>
                         </li>
                     </ul>
                 </li>

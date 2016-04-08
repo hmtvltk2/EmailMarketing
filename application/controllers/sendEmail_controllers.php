@@ -6,10 +6,23 @@ class SendEmail_controllers extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-        $this->load->model('thuDienTu_models');
+        $this->load->model('ThuDienTu_models');
         $this->load->model('ThietLapGui_models');
+        $this->load->model('ChienDich_models');
     }
 
+    public function get_num_thuDienTu_ChienDich($maThu) {
+        $input['where'] = array('maThu' => $maThu);
+        $info = count($this->ChienDich_models->get_list($input));
+        return $info;
+    }
+
+       public function get_list_thuDienTu() {
+        $input = array();
+        $info = $this->ThuDienTu_models->get_list($input);
+        return $info;
+    }
+    
     public function get_info_ThietLap() {
         $id = '1';
         $info = $this->ThietLapGui_models->get_info($id);
@@ -18,7 +31,7 @@ class SendEmail_controllers extends CI_Controller {
 
     public function sendEmail() {
         $in = $this->get_info_ThietLap();
-        
+
         $content = $this->input->post('content');
 
         $mail = new PHPMailer();
@@ -86,18 +99,29 @@ class SendEmail_controllers extends CI_Controller {
         }
     }
 
+
     public function xemThu($path, $name) {
         $p = $path . "/" . $name;
 
         $data["myfile"] = fopen($p, "r") or die("Unable to open file!");
+        
+        $data1 = $this->get_list_thuDienTu();
+        $data['thuDienTu'] = array();
+
+        foreach ($data1 as $k => $r) {
+            // thêm cột tổng số email trong 1 danh sach
+            $data['thuDienTu'][$k] = get_object_vars($r);
+            $data['thuDienTu'][$k]['num'] = $this->get_num_thuDienTu_ChienDich($data['thuDienTu'][$k]['maThu']);
+        }
+        
         $this->load->view('admin/view_email', $data);
     }
 
-    public function get_Thu(){
+    public function get_Thu() {
         $id = $this->input->post('id');
         $tenfile = "file_Email/" . $id . ".txt";
-        
-       $myfile = fopen($tenfile, "r") or die("Unable to open file!");
+
+        $myfile = fopen($tenfile, "r") or die("Unable to open file!");
         $content = "";
         while (!feof($myfile)) {
             $content = $content . fgets($myfile);
@@ -105,8 +129,8 @@ class SendEmail_controllers extends CI_Controller {
         fclose($myfile);
         echo $content;
     }
-    
-     public function update_Email() {
+
+    public function update_Email() {
         $content = $this->input->post('content');
         $id = $this->input->post('id');
         $tenfile = "file_Email/" . $id . ".txt";

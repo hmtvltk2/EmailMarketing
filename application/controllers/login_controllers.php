@@ -1,60 +1,38 @@
 <?php
 
-include 'table/obj_taiKhoan.php';
-
 class Login_controllers extends CI_Controller {
-
-    private $User;
 
     public function __construct() {
         parent::__construct();
-        $this->User = new Obj_taiKhoan();
+        $this->load->model('TaiKhoan_models');
+    } 
+    public function logout() {
+        $this->session->unset_userdata('login');
+        $this->load->view("admin/login_views");
     }
 
-    public function index() {
-            
+      public function get_list_TK($password,$username) {
+        $input = array();
+        $input['where'] = array('tenTaiKhoan' => $username, 'matKhau' =>"$password");
+        $info = $this->TaiKhoan_models->get_list($input);
+        return $info;
+    }
+    
+    public function login() {
 
-        $this->User->SETtenTaiKhoan($this->input->post('username'));
-        $this->User->SETmatKhau($this->input->post('password'));
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
 
-        
-         $this->load->model('login_model');
-        $query = $this->login_model->login($this->User);
-        
+        $query = $this->get_list_TK($password, $username);
+
         if ($query) {
             foreach ($query as $row) {
-               // $newdata = array('username' => $row->tenTaiKhoan, 'passwords' => $row->matKhau);
-           
-                $this->session->set_userdata('login',$row->tenTaiKhoan);
-                $this->load->view('admin/home_views');
+                $this->session->set_userdata('login', $row->tenTaiKhoan);
+                Redirect(base_url()."TrangChu_controllers/load");
             }
         } else {
-           // $this->load->view("admin/login_views");
-             echo "loan hến";
+            $this->load->view("admin/login_views");
         }
-        
     }
 
-//    public function login() {
-//        $this->form_validation->set_rules('username', 'Username', 'required');
-//        $this->form_validation->set_rules('password', 'Password', 'required|');
-//        if ($this->form_validation->run() == FALSE) {
-//            $this->load->view("admin/login_views");
-//        } else {
-//            $this->User->SETtenTaiKhoan($this->input->post('username'));
-//            $this->User->SETmatKhau($this->input->post('passwords'));
-//            
-//            $this->load->model('login_model');
-//            
-//            $query = $this->login_model->login($this->User);
-//        }
-//        if ($query) {
-//            foreach ($query as $row) {
-//                $newdata = array('username' => $row->id, 'passwords' => $row->emails);
-//                $this->session->set_userdata($newdata);
-//                //redirect();
-//                echo "loan tèo";
-//            }
-//        } else {$this->load->view("admin/login_views");}
-//    }
 }

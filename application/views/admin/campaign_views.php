@@ -46,7 +46,7 @@
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" >Ngày gửi * </label>
                                         <div class="col-md-7 col-sm-7 col-xs-12">
-                                            <input type="date" class="form-control ngay" required="" >
+                                            <input type="date" class="form-control ngay" required="" name="<?php echo date("Y-m-d"); ?>" readonly="" >
                                         </div>
                                     </div>
                                     <div class="item form-group">
@@ -121,12 +121,12 @@
                             </div>
                             <div class="x_content" style="height: 400px; overflow-x: hidden">
                                 <table class="table table-striped responsive-utilities jambo_table bulk_action">
-                                    <thead>
+                                    <thead style="background-color: #DEF0D8;color: black">
                                         <tr class="headings">
                                             <th class="column-title">Mã thư</th>
                                             <th class="column-title">Tên thư</th>
                                             <th class="column-title">Tiêu đề thư</th>
-                                            <th class="column-title">Nội dung</th>
+                                            <th class="column-title">#</th>
                                             <th class="column-title">Số lần gửi</th>
                                             <th class="column-title"><i class="fa fa-trash-o"></i></th>
                                         </tr>
@@ -138,7 +138,7 @@
                                                 <td class=" "><?php echo $r['maThu']; ?></td>
                                                 <td class=" "><?php echo $r['tenThu']; ?></td>
                                                 <td class=" "><?php echo $r['tieuDe']; ?></td>
-                                                <td><a href="<?= base_url() ?>sendEmail_controllers/xemThu/<?php echo $r['noiDung']; ?>"><?php echo $r['noiDung']; ?></a></td>   
+                                                <td><a href="<?= base_url() ?>ThuDienTu_controllers/xemThu/<?php echo $r['noiDung']; ?>">xem nội dung</a></td>   
                                                 <td class=" "><?php echo $r['num']; ?></td>
                                                 <td><input type="checkbox" class="xoaEmail" name="<?php echo $r['maThu']; ?>" id="<?php echo $r['num']; ?>"></td>                                                                                    
                                             </tr>
@@ -148,7 +148,6 @@
                                 </table>
                             </div>
                         </div>
-
                     </div>
                     <footer>
                         <div class="copyright-info">
@@ -172,7 +171,11 @@
     <script type="text/javascript" >
         $(document).ready(function () {
 
+            a = $(".ngay").attr("name");
+            $(".ngay").val(a);
+
             $('#taoChienDich').submit(function (e) {
+
 
                 e.preventDefault();
                 var tenChienDich = $(".tenChienDich").val();
@@ -189,12 +192,13 @@
                     if (data == "0") {
                     } else {
                         $('#show-success').click();
-                        location.reload(true);
+                        window.location = "<?=base_url()?>TrangChu_controllers/load";
                     }
                 });
             });
 
             $(".xoaEmail").click(function () {
+
                 var i10 = $(this).prop('checked');
                 if (i10 == false) {
                     return;
@@ -229,7 +233,6 @@
                     }
                 }
             });
-
 
             $('#show-alert').click(function () {
                 $("#notification-1").emerge({

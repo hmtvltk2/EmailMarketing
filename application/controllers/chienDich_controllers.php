@@ -204,13 +204,7 @@ class ChienDich_controllers extends CI_Controller {
         }
     }
 
-    public function baoCao() {
-        $data['chienDich'] = $this->get_list_chienDich();
-        $this->load->view("admin/report_views", $data);
-    }
-
-    public function update_SLmo() {
-        $id = 31;
+    public function update_SLmo($id) {
         if ($id != "" || $id != null) {
             $info = $this->get_info_ChienDich($id);
             $slMo = $info->SLmo;
@@ -222,7 +216,7 @@ class ChienDich_controllers extends CI_Controller {
                 echo 0;
             }
         } else {
-            echo "kakaka";
+            echo "";
         }
     }
 
@@ -233,6 +227,7 @@ class ChienDich_controllers extends CI_Controller {
             $data = array();
             $data['SLclickLink'] = $SLclickLink + 1;
             $this->ChienDich_models->update($id, $data);
+            $this->update_SLmo($id);
             $path = $link1;
             if ($link2 != "") {
                 $path = $path . "////" . $link2;
@@ -251,5 +246,11 @@ class ChienDich_controllers extends CI_Controller {
             echo "lỗi";
         }
     }
-
+    
+    public function thayDoiMa(){
+        $ma = $this->input->post('id');
+        $info = $this->get_info_ChienDich($ma);
+        echo json_encode($info);
+    }
 }
+      

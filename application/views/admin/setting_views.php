@@ -23,7 +23,7 @@
                                         <div class="clearfix"></div>
                                     </div>
                                     <div class="x_content">
-                                        <form class="form-horizontal form-label-left input_mask" method="post">
+                                        <form class="form-horizontal form-label-left input_mask luu_TaiKhoan" method="post">
                                             <div class="form-group">
                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Email * </label>
                                                 <div class="col-md-9 col-sm-9 col-xs-12">
@@ -49,7 +49,7 @@
                                                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
                                                     <button class="btn btn-success suaTaiKhoan">Sửa</button>
                                                     <button class="btn btn-primary huy_TaiKhoan" style="display:none">Hủy</button>
-                                                    <button class="btn btn-success luu_TaiKhoan" style="display:none" type="submit">Lưu</button>
+                                                    <button class="btn btn-success TaiKhoan" style="display:none" type="submit">Lưu</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -239,11 +239,11 @@
                 $(".ten_tk").attr('disabled', false);
                 $(".mk_tk").attr('disabled', false);
                 $(".huy_TaiKhoan").show();
-                $(".luu_TaiKhoan").show();
+                $(".TaiKhoan").show();
 
                 $(".email_gui_tk").val($(".email_gui_tk").attr('placeholder'));
                 $(".ten_tk").val($(".ten_tk").attr('placeholder'));
-                $(".mk_tk").val($(".mk_tk").attr('placeholder'));
+                $(".mk_tk").val("");
             });
 
             $(".huy_TaiKhoan").click(function (e) {
@@ -253,11 +253,11 @@
                 $(".ten_tk").val("");
                 $(".mk_tk").val("");
                 $(".huy_TaiKhoan").hide();
-                $(".luu_TaiKhoan").hide();
+                $(".TaiKhoan").hide();
                 $(".suaTaiKhoan").show();
             });
 
-            $(".luu_TaiKhoan").click(function (e) {
+            $(".luu_TaiKhoan").submit(function (e) {
                 e.preventDefault();
                 email_gui_tk = $(".email_gui_tk").val();
                 ten_tk = $(".ten_tk").val();
@@ -271,7 +271,7 @@
                         {
                            $('#show-success').click();
                             $(".huy_TaiKhoan").hide();
-                            $(".luu_TaiKhoan").hide();
+                            $(".TaiKhoan").hide();
                             $(".suaTaiKhoan").show();
 
                             $(".email_gui_tk").attr('disabled', true);

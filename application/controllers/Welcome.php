@@ -4,14 +4,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
 
+     public function __construct() {
+        parent::__construct();
+    }
     public function index() {
-         $this->session->unset_userdata('login');// xoa session
-        
         $user_data = $this->session->userdata('login');
+        echo $user_data;
         if (!$user_data) {
-             $this->load->view('admin/tl5');
+             $this->load->view('admin/login_views');
         } else {
-            $this->load->view('admin/home_views');
+             Redirect(base_url()."TrangChu_controllers/load");
         }
     }
 
